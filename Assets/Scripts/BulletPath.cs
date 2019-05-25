@@ -16,6 +16,22 @@ public class BulletPath : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        var component = other.GetComponent<Enemy>();
+        if (component != null)
+        {
+            component.Die();
+        }
+
+        //Destroy if colliding with something else than player
+        var playerController = other.GetComponent<PlayerController>();
+        if (playerController == null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

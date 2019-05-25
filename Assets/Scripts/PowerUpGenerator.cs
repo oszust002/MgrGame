@@ -30,7 +30,7 @@ public class PowerUpGenerator : MonoBehaviour
             var weaponPowerUp = weaponPowerUps[random.Next(weaponPowerUps.Count)];
             var spawnPosition = PlayerController.Position;
             //player position +- random x/y such as x^2+y^2=radius^2
-            spawnPosition += Random.insideUnitCircle * radius;
+            spawnPosition += Random.insideUnitCircle.normalized * radius;
             Instantiate(weaponPowerUp, spawnPosition, Quaternion.identity);
             m_NextPowerUp = Time.time + spawnTimeStep;
             existingPowerUpsCount++;
