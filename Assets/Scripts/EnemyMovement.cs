@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float rotateSpeed = 4f;
-    public float moveSpeed = .001f;
+    public float moveSpeed = 4f;
     public float maxGameDistance = 30f;
     
     // Start is called before the first frame update
