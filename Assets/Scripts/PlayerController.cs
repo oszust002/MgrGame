@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
             lookDir = m_MousePos - rb.position;
         }
 
-        if (Math.Abs(lookDir.x) > 0.01 || Math.Abs(lookDir.y) > 0.01)
+        if (!isJoystickControl || Math.Abs(lookDir.x) > 0.01 || Math.Abs(lookDir.y) > 0.01)
         {
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
             rb.rotation = angle;

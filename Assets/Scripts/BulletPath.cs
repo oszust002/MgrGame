@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletPath : MonoBehaviour
 {
     public float speed = 10f;
+    public bool isEnemyBullet;
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
@@ -18,17 +19,35 @@ public class BulletPath : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        var component = other.GetComponent<Enemy>();
-        if (component != null)
+        if (isEnemyBullet)
         {
-            component.Die();
-        }
+            var component = other.GetComponent<PlayerController>();
+            if (component != null)
+            {
+                component.Die();
+            }
 
-        //Destroy if colliding with something else than player
-        var playerController = other.GetComponent<PlayerController>();
-        if (playerController == null)
+            //Destroy if colliding with something else than enemy
+            var playerController = other.GetComponent<Enemy>();
+            if (playerController == null)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else
         {
-            Destroy(gameObject);
+            var component = other.GetComponent<Enemy>();
+            if (component != null)
+            {
+                component.Die();
+            }
+
+            //Destroy if colliding with something else than player
+            var playerController = other.GetComponent<PlayerController>();
+            if (playerController == null)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
