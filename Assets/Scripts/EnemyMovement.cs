@@ -5,14 +5,17 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private bool isShooter;
     public float rotateSpeed = 4f;
     public float moveSpeed = 4f;
     public float maxGameDistance = 30f;
+    public float strafeDistance = 5f;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        isShooter = GetComponent<EnemyShooter>();
     }
 
     // Update is called once per frame
@@ -30,12 +33,18 @@ public class EnemyMovement : MonoBehaviour
         Vector2 rotateTowards = Vector3.RotateTowards(transform.up.normalized, direction.normalized, step, 0.0f);
         transform.rotation = Quaternion.LookRotation(Vector3.forward, rotateTowards);
         
-        // The step size is equal to speed times frame time.
-
         //If is shooter and near player then strafe?
-        
-        //Calculate position (you are rotated so it's just moving forward) and move enemy there
-        var newPos = transform.position + transform.up * moveSpeed * Time.fixedDeltaTime;
+        Vector2 newPos;
+        if (isShooter && distance <= strafeDistance)
+        {
+            newPos = transform.position + transform.right * moveSpeed * Time.fixedDeltaTime;
+        }
+        else
+        {
+            //Calculate position (you are rotated so it's just moving forward) and move enemy there
+            newPos = transform.position + transform.up * moveSpeed * Time.fixedDeltaTime;
+        }   
+        rb.MovePosition(newPos);
         rb.MovePosition(newPos);
     }
 }
