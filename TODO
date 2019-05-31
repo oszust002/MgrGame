@@ -1,0 +1,21 @@
+Enemy types:
+    - just go and kill him - done
+    - shooter - done
+    - ? bomber (stopping to move and bombing when in distance)
+
+Power ups:
+    - weapon power ups
+    - timed speed buffs
+    - ? special ability
+    
+Special ability or shield? (for EMG)
+    
+Waves and levels:
+    - special waves in level (easier/harder, maybe procedural generation??)
+    
+Externals connection:
+    - BITalino (EMG, look into space shooter)
+        - arm hardware
+    - cheststrap (AntTester has done getting ECG) \
+                                                   ----- ML to check player activity (or emotions?)    
+    - pad acc, gyro                               /
