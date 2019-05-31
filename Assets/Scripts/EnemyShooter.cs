@@ -13,7 +13,8 @@ public class EnemyShooter : MonoBehaviour
     {
         if (Time.time > m_NextShotTime)
         {
-            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            var bulletObject = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Destroy(bulletObject, 10f);
             m_NextShotTime = Time.time + 1f / fireRate;
         }
     }

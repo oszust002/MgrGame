@@ -13,6 +13,4 @@ public class PowerUp : MonoBehaviour
         playerShooter.currentWeapon = powerUpWeapon;
         Destroy(gameObject);
     }
-
-    // Update is called once per fram
 }

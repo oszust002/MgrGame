@@ -5255,7 +5255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987096003130de149aeff0c310b9fe43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 10
   moveSmooth: 0.5
 --- !u!114 &1023396991
 MonoBehaviour:
@@ -19590,7 +19590,7 @@ MonoBehaviour:
   - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
   - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
   spawnRadius: 20
-  spawnTime: 15
+  spawnTime: 5
 --- !u!4 &1768359265
 Transform:
   m_ObjectHideFlags: 0

@@ -4,17 +4,31 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private bool isShooter;
+    public static List<Rigidbody2D> enemies;
+
+    [Header("Movement")]
     public float rotateSpeed = 4f;
     public float moveSpeed = 4f;
     public float maxGameDistance = 30f;
+    
+    //Repel
+    public float repelRange = .6f;
+    public float repelForce = 1f;
+    
+    [Header("Shooter properties")]
     public float strafeDistance = 5f;
     
+    private Rigidbody2D rb;
+    private bool isShooter;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (enemies == null)
+        {
+            enemies = new List<Rigidbody2D>();
+        }
+        enemies.Add(rb);
         isShooter = GetComponent<EnemyShooter>();
     }
 
@@ -43,8 +57,33 @@ public class EnemyMovement : MonoBehaviour
         {
             //Calculate position (you are rotated so it's just moving forward) and move enemy there
             newPos = transform.position + transform.up * moveSpeed * Time.fixedDeltaTime;
-        }   
+            newPos += CalculateRepel();
+        }
+        
         rb.MovePosition(newPos);
-        rb.MovePosition(newPos);
+    }
+
+    private Vector2 CalculateRepel()
+    {
+        Vector2 repel = Vector2.zero;
+        foreach (var enemy in enemies)
+        {
+            if (enemy == rb)
+            {
+                continue;
+            }
+
+            if (Vector2.Distance(enemy.position, rb.position) <= repelRange)
+            {
+                repel += (rb.position - enemy.position).normalized;
+            }
+        }
+
+        return repel * Time.fixedDeltaTime * repelForce;
+    }
+
+    private void OnDestroy()
+    {
+        enemies?.Remove(rb);
     }
 }
