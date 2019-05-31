@@ -12,8 +12,8 @@ public class EnemyMovement : MonoBehaviour
     public float maxGameDistance = 30f;
     
     //Repel
-    public float repelRange = .6f;
-    public float repelForce = 1f;
+    public float repelRange = 3;
+    public float repelForce = .5f;
     
     [Header("Shooter properties")]
     public float strafeDistance = 5f;
