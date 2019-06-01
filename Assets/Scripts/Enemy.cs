@@ -9,6 +9,7 @@ public class Enemy : HealthEntity
     // Start is called before the first frame update
     public SpriteRenderer spriteRenderer;
     private float initHealth;
+    public int killReward = 5;
 
     private void Start()
     {
@@ -35,7 +36,7 @@ public class Enemy : HealthEntity
 
     public override void Die()
     {
-        Progress.instance.AddScore(1);
+        Progress.instance.AddScore(killReward);
         base.Die();
     }
 }
