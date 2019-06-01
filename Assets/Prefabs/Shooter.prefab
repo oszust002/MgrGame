@@ -179,6 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4ef6c465a8202448b10a8aa290e074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 30
+  collisionDamage: 92
+  spriteRenderer: {fileID: 8652062251784795019}
 --- !u!70 &8652062253853986796
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -210,8 +213,8 @@ MonoBehaviour:
   rotateSpeed: 1
   moveSpeed: 5
   maxGameDistance: 30
-  repelRange: 0.5
-  repelForce: 1
+  repelRange: 1.5
+  repelForce: 5
   strafeDistance: 5
 --- !u!114 &8652062253853986798
 MonoBehaviour:

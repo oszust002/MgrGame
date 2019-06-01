@@ -74,11 +74,4 @@ public class PlayerController : MonoBehaviour
         var angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
     }
-
-    public void Die()
-    {
-        Debug.Log("Player Death");
-        Destroy(gameObject);
-        GameManager.instance.PlayerDied();
-    }
 }

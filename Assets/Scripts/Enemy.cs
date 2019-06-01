@@ -2,24 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : HealthEntity
 {
+
+    public int collisionDamage = 92;
     // Start is called before the first frame update
+    public SpriteRenderer spriteRenderer;
+    private float initHealth;
+
+    private void Start()
+    {
+        initHealth = health;
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        var playerController = other.gameObject.GetComponent<PlayerController>();
-        if (playerController != null)
+        var player = other.gameObject.GetComponent<Player>();
+        if (player != null)
         {
-            playerController.Die();
+            player.TakeDamage(collisionDamage);
             Debug.Log("Enemy death"); //Death logic (animations etc)
-            Destroy(gameObject);
+            base.Die();
         }
     }
 
-    public void Die()
+    public override void TakeDamage(int amount)
+    {
+        base.TakeDamage(amount);
+        var inverseLerp = Mathf.InverseLerp(0, initHealth, health);
+        spriteRenderer.color = Color.Lerp(Color.red, Color.white, inverseLerp);
+    }
+
+    public override void Die()
     {
         Progress.instance.AddScore(1);
-        Destroy(gameObject);
+        base.Die();
     }
 }

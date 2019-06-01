@@ -6,6 +6,7 @@ public class BulletPath : MonoBehaviour
 {
     public float speed = 10f;
     public bool isEnemyBullet;
+    public int damage = 10;
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
@@ -21,10 +22,10 @@ public class BulletPath : MonoBehaviour
     {
         if (isEnemyBullet)
         {
-            var component = other.GetComponent<PlayerController>();
-            if (component != null)
+            var player = other.GetComponent<Player>();
+            if (player != null)
             {
-                component.Die();
+                player.TakeDamage(damage);
             }
 
             //Destroy if colliding with something else than enemy
@@ -39,7 +40,7 @@ public class BulletPath : MonoBehaviour
             var component = other.GetComponent<Enemy>();
             if (component != null)
             {
-                component.Die();
+                component.TakeDamage(damage);
             }
 
             //Destroy if colliding with something else than player
