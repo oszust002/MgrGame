@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        Progress.instance.AddScore(1);
         Destroy(gameObject);
     }
 }
