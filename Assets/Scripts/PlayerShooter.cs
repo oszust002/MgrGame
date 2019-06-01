@@ -18,6 +18,11 @@ public class PlayerShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Progress.instance.IsLevelLoading)
+        {
+            return;
+        }
+        
         if (Input.GetButton("Fire1"))
         {
             if (Time.time > m_NextShotTime)

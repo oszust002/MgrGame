@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [HideInInspector]
     public List<GameObject> enemies;
     public float spawnRadius = 20f;
     public float spawnTime = 15f;
@@ -18,6 +19,11 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Progress.instance.IsLevelLoading)
+        {
+            return;
+        }
+        
         if (Time.time > m_NextSpawnTime)
         {
             foreach (var enemy in enemies)

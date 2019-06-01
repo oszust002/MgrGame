@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static Vector2 Position = Vector2.zero;
-    
+
     public float moveSpeed = 10f;
     public float moveSmooth = .3f;
 
@@ -17,17 +17,17 @@ public class PlayerController : MonoBehaviour
     private Camera m_Camera;
     private Rigidbody2D rb;
     private bool isJoystickControl;
-    
+
     private float xDir;
     private float yDIr;
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
         m_Camera = Camera.main;
         rb = GetComponent<Rigidbody2D>();
-                
+
         //Check if there is joystick connected
         var joystickNames = Input.GetJoystickNames();
         isJoystickControl = joystickNames.Length > 0 && joystickNames[0].Length > 0;
@@ -39,11 +39,11 @@ public class PlayerController : MonoBehaviour
         //Movement
         m_Movement.x = Input.GetAxisRaw("Horizontal");
         m_Movement.y = Input.GetAxisRaw("Vertical");
-        
+
         //Direction by joystick
         xDir = Input.GetAxisRaw("HorizontalDS");
         yDIr = Input.GetAxisRaw("VerticalDS");
-        
+
         //Mouse position for direction by mouse
         m_MousePos = m_Camera.ScreenToWorldPoint(Input.mousePosition);
         Position = transform.position;
@@ -51,7 +51,13 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 desiredVelocity = m_Movement * moveSpeed;
+        if (Progress.instance.IsLevelLoading)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
+        var desiredVelocity = m_Movement * moveSpeed;
         rb.velocity = Vector2.SmoothDamp(rb.velocity, desiredVelocity, ref m_Velocity, moveSmooth);
         Vector2 lookDir;
         if (isJoystickControl)
@@ -63,11 +69,10 @@ public class PlayerController : MonoBehaviour
             lookDir = m_MousePos - rb.position;
         }
 
-        if (!isJoystickControl || Math.Abs(lookDir.x) > 0.01 || Math.Abs(lookDir.y) > 0.01)
-        {
-            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-            rb.rotation = angle;
-        }
+        if (isJoystickControl && !(Math.Abs(lookDir.x) > 0.01) && !(Math.Abs(lookDir.y) > 0.01)) return;
+        
+        var angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        rb.rotation = angle;
     }
 
     public void Die()

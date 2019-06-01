@@ -25,6 +25,11 @@ public class PowerUpGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Progress.instance.IsLevelLoading)
+        {
+            return;
+        }
+        
         if (Time.time > m_NextPowerUp && existingPowerUpsCount < maxPowerUps && weaponPowerUps.Count != 0)
         {
             var weaponPowerUp = weaponPowerUps[random.Next(weaponPowerUps.Count)];
