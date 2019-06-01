@@ -5,9 +5,15 @@ public class HealthEntity : MonoBehaviour
 {
 
     public int health = 30;
+    public GameObject deathEffect;
 
     public virtual void Die()
     {
+        if (deathEffect != null)
+        {
+            var instantiate = Instantiate(deathEffect, transform.position, transform.rotation);
+            Destroy(instantiate, 3f);
+        }
         Destroy(gameObject);
     }
     

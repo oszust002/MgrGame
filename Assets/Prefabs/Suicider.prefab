@@ -69,8 +69,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
+  deathEffect: {fileID: 5583557331685532676, guid: 8374bb3331fa91248ac18b8d2d6037ec,
+    type: 3}
   collisionDamage: 92
   spriteRenderer: {fileID: 1960219829000342832}
+  killReward: 5
 --- !u!70 &1960219828984031084
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
