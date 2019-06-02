@@ -15,6 +15,7 @@ public class Progress : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI textScore;
     public Slider slider;
+    public Animator endGameAnimation;
     
     [HideInInspector]
     public bool IsLevelLoading;
@@ -96,6 +97,7 @@ public class Progress : MonoBehaviour
     private IEnumerator EndTheGame()
     {
         IsLevelLoading = true;
+        endGameAnimation.SetTrigger("EndGame");
         yield return new WaitForSeconds(4f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
