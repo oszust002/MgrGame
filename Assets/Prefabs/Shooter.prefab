@@ -235,3 +235,4 @@ MonoBehaviour:
   firePoint: {fileID: 8652062253528385577}
   bulletPrefab: {fileID: 5873546861295240984, guid: cbf45ac4e2d33e74d8fa11688f6a17f2,
     type: 3}
+  shotSound: {fileID: 8300000, guid: d2e82a5a581ba5d459b274c8db4b0015, type: 3}

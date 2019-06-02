@@ -17,7 +17,7 @@ public class PlayerShooter : MonoBehaviour
     private void Awake()
     {
         weaponAudio = gameObject.AddComponent<AudioSource>();
-        weaponAudio.volume = 0.5f;
+        weaponAudio.volume = 0.3f;
         weaponAudio.loop = false;
         weaponAudio.playOnAwake = false;
     }
