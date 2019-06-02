@@ -7,13 +7,13 @@ public class BulletPath : MonoBehaviour
     public float speed = 10f;
     public bool isEnemyBullet;
     public int damage = 10;
+    public GameObject destroyEffect;
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
         rb.velocity = transform.up * speed;
         
     }
@@ -32,7 +32,7 @@ public class BulletPath : MonoBehaviour
             var playerController = other.GetComponent<Enemy>();
             if (playerController == null)
             {
-                Destroy(gameObject);
+                Explode();
             }
         }
         else
@@ -47,9 +47,16 @@ public class BulletPath : MonoBehaviour
             var playerController = other.GetComponent<PlayerController>();
             if (playerController == null)
             {
-                Destroy(gameObject);
+                Explode();
             }
         }
+    }
+
+    private void Explode()
+    {
+        var destroyEffectInstance = Instantiate(destroyEffect, transform.position, transform.rotation);
+        Destroy(destroyEffectInstance, 1f);
+        Destroy(gameObject);
     }
 
     // Update is called once per frame

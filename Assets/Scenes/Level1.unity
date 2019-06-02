@@ -5781,7 +5781,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 2893550643893876605, guid: 2ea2f6fd498bee244bc9d120a399abe0,
+    type: 3}
   healthSlider: {fileID: 762928558}
 --- !u!1 &1043348901
 GameObject:

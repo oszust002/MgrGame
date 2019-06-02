@@ -96,6 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   isEnemyBullet: 0
+  damage: 10
+  destroyEffect: {fileID: 88652151792809014, guid: ef0fb1e6115bc064487fb2c8dddca55e,
+    type: 3}
 --- !u!50 &4583743704980852860
 Rigidbody2D:
   serializedVersion: 4
