@@ -73,7 +73,7 @@ MonoBehaviour:
     type: 3}
   collisionDamage: 92
   spriteRenderer: {fileID: 1960219829000342832}
-  killReward: 5
+  killReward: 1
 --- !u!70 &1960219828984031084
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

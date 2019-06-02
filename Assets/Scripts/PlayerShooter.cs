@@ -11,14 +11,23 @@ public class PlayerShooter : MonoBehaviour
     public Image weaponImage;
     // Start is called before the first frame update
     
-
     private float m_NextShotTime = 0f;
-    void Start()
+    private AudioSource weaponAudio;
+
+    private void Awake()
     {
-        UpdateUI();
+        weaponAudio = gameObject.AddComponent<AudioSource>();
+        weaponAudio.volume = 0.5f;
+        weaponAudio.loop = false;
+        weaponAudio.playOnAwake = false;
     }
 
-    private void UpdateUI()
+    void Start()
+    {
+        UpdateWeaponAttributes();
+    }
+
+    private void UpdateWeaponAttributes()
     {
         if (currentWeapon != null && currentWeapon.image != null)
         {
@@ -28,12 +37,14 @@ public class PlayerShooter : MonoBehaviour
         {
             weaponImage.sprite = null;
         }
+
+        weaponAudio.clip = currentWeapon.audio;
     }
 
     public void SetCurrentWeapon(Weapon weapon)
     {
         currentWeapon = weapon;
-        UpdateUI();
+        UpdateWeaponAttributes();
     }
 
     // Update is called once per frame
@@ -49,6 +60,7 @@ public class PlayerShooter : MonoBehaviour
             if (Time.time > m_NextShotTime)
             {
                 currentWeapon.ShootBullet(fireStartPoint);
+                weaponAudio.Play();
                 m_NextShotTime = Time.time + 1f / currentWeapon.fireRate;
             }
         }

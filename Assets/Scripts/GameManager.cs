@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
+    public Animator gameOverAnimator;
     public static GameManager instance;
     // Start is called before the first frame update
     void Awake()
@@ -24,7 +25,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator RestartLevel()
     {
-        yield return new WaitForSeconds(2f);
+        gameOverAnimator.SetTrigger("GameOver");
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

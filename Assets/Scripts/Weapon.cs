@@ -7,6 +7,7 @@ public class Weapon : ScriptableObject
 {
     public GameObject shotPrefab;
     public Sprite image;
+    public AudioClip audio;
 
     public float fireRate;
     // Start is called before the first frame update

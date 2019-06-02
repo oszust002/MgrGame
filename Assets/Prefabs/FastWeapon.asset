@@ -15,4 +15,5 @@ MonoBehaviour:
   shotPrefab: {fileID: 1588410840672605298, guid: 1959a9bd9f37c8144b62df6e4c1de7be,
     type: 3}
   image: {fileID: 21300000, guid: bcd39aa2aa64c4a42b3d5d82136a83ed, type: 3}
+  audio: {fileID: 8300000, guid: fcb135eaaf2b72b4e801d3fb8e29d5e6, type: 3}
   fireRate: 10
