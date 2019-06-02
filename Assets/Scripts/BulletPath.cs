@@ -60,8 +60,8 @@ public class BulletPath : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Remove()
     {
-        
+        Explode();
     }
 }

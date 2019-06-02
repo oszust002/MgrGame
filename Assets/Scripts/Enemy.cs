@@ -39,4 +39,9 @@ public class Enemy : HealthEntity
         Progress.instance.AddScore(killReward);
         base.Die();
     }
+
+    public void Remove()
+    {
+        base.Die();
+    }
 }

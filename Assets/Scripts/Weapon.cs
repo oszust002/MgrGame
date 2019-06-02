@@ -6,6 +6,7 @@ using UnityEngine;
 public class Weapon : ScriptableObject
 {
     public GameObject shotPrefab;
+    public Sprite image;
 
     public float fireRate;
     // Start is called before the first frame update

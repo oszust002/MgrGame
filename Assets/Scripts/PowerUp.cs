@@ -17,7 +17,7 @@ public class PowerUp : MonoBehaviour
     {
         var playerShooter = other.GetComponent<PlayerShooter>();
         if (playerShooter == null) return;
-        playerShooter.currentWeapon = powerUpWeapon;
+        playerShooter.SetCurrentWeapon(powerUpWeapon);
         Destroy(gameObject);
     }
 }

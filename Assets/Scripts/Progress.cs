@@ -55,12 +55,28 @@ public class Progress : MonoBehaviour
             var enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (var enemy in enemies)
             {
-                Destroy(enemy);
+                var enemyComponent = enemy.GetComponent<Enemy>();
+                if (enemyComponent != null)
+                {
+                    enemyComponent.Remove();
+                }
+                else
+                {
+                    Destroy(enemy);
+                }
             }
             var bullets = GameObject.FindGameObjectsWithTag("Bullet");
             foreach (var bullet in bullets)
             {
-                Destroy(bullet);
+                var bulletPath = bullet.GetComponent<BulletPath>();
+                if (bulletPath != null)
+                {
+                    bulletPath.Remove();
+                }
+                else
+                {
+                    Destroy(bullet);
+                }
             }
             
             if (levels[currentLevel].endTheGame || currentLevel > levels.Count - 1)
