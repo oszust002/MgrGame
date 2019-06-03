@@ -20,6 +20,12 @@ public class BulletPath : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        var bullet = other.GetComponent<BulletPath>();
+        if (bullet != null && AreSameBulletType(bullet))
+        {
+            return;
+        }
+        
         if (isEnemyBullet)
         {
             var player = other.GetComponent<Player>();
@@ -50,6 +56,11 @@ public class BulletPath : MonoBehaviour
                 Explode();
             }
         }
+    }
+
+    private bool AreSameBulletType(BulletPath bullet)
+    {
+        return bullet.isEnemyBullet == isEnemyBullet;
     }
 
     private void Explode()
