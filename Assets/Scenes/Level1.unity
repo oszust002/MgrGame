@@ -479,8 +479,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 24.900146}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: 0, y: 19.3}
+  m_SizeDelta: {x: 160, y: 13.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &313375075
 MonoBehaviour:
@@ -5839,6 +5839,9 @@ MonoBehaviour:
   fireStartPoint: {fileID: 214391829}
   currentWeapon: {fileID: 11400000, guid: d3a0636593766cc4e9d4cbdb311abc45, type: 2}
   weaponImage: {fileID: 1853023491}
+  specialPowerPrefab: {fileID: 8163538890658032549, guid: 913f038895d212a45b3886f946d466d4,
+    type: 3}
+  specialDelay: 10
 --- !u!114 &1023396992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5854,6 +5857,7 @@ MonoBehaviour:
   health: 30
   deathEffect: {fileID: 2893550643893876605, guid: 2ea2f6fd498bee244bc9d120a399abe0,
     type: 3}
+  deathSound: {fileID: 8300000, guid: 541e0b9054d82b04c9107634e0198f4d, type: 3}
   healthSlider: {fileID: 762928558}
 --- !u!1 &1043348901
 GameObject:
@@ -15363,8 +15367,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -47, y: 13}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -38.4, y: 12.055}
+  m_SizeDelta: {x: 200, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1221850340
 MonoBehaviour:
@@ -15414,7 +15418,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24.1
+  m_fontSize: 18
   m_fontSizeBase: 21
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -15432,7 +15436,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -21001,8 +21005,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -18, y: -9}
-  m_SizeDelta: {x: 41.9, y: 43.4}
+  m_AnchoredPosition: {x: -15, y: -16}
+  m_SizeDelta: {x: 32.6, y: 33.758}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1853023491
 MonoBehaviour:
@@ -21089,7 +21093,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

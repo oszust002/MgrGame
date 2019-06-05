@@ -182,6 +182,7 @@ MonoBehaviour:
   health: 30
   deathEffect: {fileID: 5583557331685532676, guid: 8374bb3331fa91248ac18b8d2d6037ec,
     type: 3}
+  deathSound: {fileID: 8300000, guid: a5db1d03a54f9e94bb89c7a58e518b57, type: 3}
   collisionDamage: 92
   spriteRenderer: {fileID: 8652062251784795019}
   killReward: 3

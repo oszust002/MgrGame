@@ -10,8 +10,11 @@ public class PlayerShooter : MonoBehaviour
 
     public Image weaponImage;
     // Start is called before the first frame update
+    public GameObject specialPowerPrefab;
+    public float specialDelay = 10f;
     
     private float m_NextShotTime = 0f;
+    private float m_nextSpecial = 0f;
     private AudioSource weaponAudio;
 
     private void Awake()
@@ -62,6 +65,15 @@ public class PlayerShooter : MonoBehaviour
                 currentWeapon.ShootBullet(fireStartPoint);
                 weaponAudio.Play();
                 m_NextShotTime = Time.time + 1f / currentWeapon.fireRate;
+            }
+        }
+
+        if (Input.GetButton("Fire2"))
+        {
+            if (Time.time > m_nextSpecial)
+            {
+                Instantiate(specialPowerPrefab, transform.position, transform.rotation);
+                m_nextSpecial = Time.time + specialDelay;
             }
         }
     }
