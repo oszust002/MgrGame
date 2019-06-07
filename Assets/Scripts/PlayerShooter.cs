@@ -9,12 +9,12 @@ public class PlayerShooter : MonoBehaviour
     public Weapon currentWeapon;
 
     public Image weaponImage;
+    public Image specialPowerImage;
     // Start is called before the first frame update
     public GameObject specialPowerPrefab;
     public float specialDelay = 10f;
     
     private float m_NextShotTime = 0f;
-    private float m_nextSpecial = 0f;
     private AudioSource weaponAudio;
 
     private void Awake()
@@ -68,13 +68,15 @@ public class PlayerShooter : MonoBehaviour
             }
         }
 
+        specialPowerImage.fillAmount =
+            Mathf.Clamp(specialPowerImage.fillAmount + 1 / specialDelay * Time.fixedDeltaTime, 0, 1);
         if (Input.GetButton("Fire2"))
         {
-            if (Time.time > m_nextSpecial)
+            if (specialPowerImage.fillAmount >= 1)
             {
                 Instantiate(specialPowerPrefab, transform.position, transform.rotation);
-                m_nextSpecial = Time.time + specialDelay;
-            }
+                specialPowerImage.fillAmount = 0;
+            }    
         }
     }
 }
