@@ -20819,7 +20819,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPowerUps:
   - {fileID: 8581249930259547333, guid: 4db0b5867958522479ade0f80ccfa3af, type: 3}
-  - {fileID: 1744458576486728204, guid: ae037835fa278a942a743d39160425fb, type: 3}
   spawnTimeStep: 4
   maxPowerUps: 4
   radius: 20
