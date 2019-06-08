@@ -2,22 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public abstract class PowerUp : MonoBehaviour
 {
-    public Weapon powerUpWeapon;
+    
     // Start is called before the first frame update
 
 
     private void Update()
     {
+        var distance = Vector3.Distance(transform.position, PlayerController.Position);
+        if (distance > 40f)
+        {
+            Destroy(gameObject);
+        }
         transform.Rotate(0f, 0f, Time.fixedDeltaTime * 50f, Space.Self);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        var playerShooter = other.GetComponent<PlayerShooter>();
-        if (playerShooter == null) return;
-        playerShooter.SetCurrentWeapon(powerUpWeapon);
+        ApplyPowerUp(other);
         Destroy(gameObject);
     }
+
+    protected abstract void ApplyPowerUp(Collider2D other);
 }

@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private enum Type
-    {
-        BOMBER, SUICIDER, SHOOTER
-    }
     
     public static List<Rigidbody2D> enemies;
 

@@ -252,7 +252,7 @@ MonoBehaviour:
     - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
     spawnRate: 2
     finishScore: 10
-    endTheGame: 1
+    endTheGame: 0
   - enemies:
     - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
     - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
@@ -15526,10 +15526,10 @@ RectTransform:
   m_Father: {fileID: 2053826371}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 205.2, y: 139.3}
-  m_SizeDelta: {x: 32.6, y: 33.758}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -30.800003, y: -72.7}
+  m_SizeDelta: {x: 32.600006, y: 33.757996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1239606859
 MonoBehaviour:
@@ -20819,6 +20819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPowerUps:
   - {fileID: 8581249930259547333, guid: 4db0b5867958522479ade0f80ccfa3af, type: 3}
+  - {fileID: 1744458576486728204, guid: ae037835fa278a942a743d39160425fb, type: 3}
   spawnTimeStep: 4
   maxPowerUps: 4
   radius: 20
@@ -21521,6 +21522,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581249930259547332, guid: 4db0b5867958522479ade0f80ccfa3af,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4db0b5867958522479ade0f80ccfa3af, type: 3}
