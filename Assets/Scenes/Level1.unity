@@ -256,7 +256,7 @@ MonoBehaviour:
   - enemies:
     - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
     - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
-    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
     - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
     - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
     spawnRate: 4
@@ -265,9 +265,9 @@ MonoBehaviour:
   - enemies:
     - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
     - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
-    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
-    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
-    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
     spawnRate: 3
     finishScore: 100
     endTheGame: 1

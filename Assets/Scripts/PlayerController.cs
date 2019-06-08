@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         //Check if there is joystick connected
         var joystickNames = Input.GetJoystickNames();
         isJoystickControl = joystickNames.Length > 0 && joystickNames[0].Length > 0;
+        Position = transform.position;
     }
 
     // Update is called once per frame
