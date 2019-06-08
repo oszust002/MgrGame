@@ -29,28 +29,19 @@ public class EnemyMovement : MonoBehaviour
     private bool stopToBomb = false;
     
     private Rigidbody2D rb;
-    private Type type = Type.SUICIDER;
+
+    private Enemy m_enemy;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_enemy = GetComponent<Enemy>();
         rb = GetComponent<Rigidbody2D>();
         if (enemies == null)
         {
             enemies = new List<Rigidbody2D>();
         }
         enemies.Add(rb);
-        var enemyShooter = GetComponent<EnemyShooter>();
-        if (enemyShooter != null)
-        {
-            type = Type.SHOOTER;
-        }
-
-        var enemyBomber = GetComponent<EnemyBomber>();
-        if (enemyBomber != null)
-        {
-            type = Type.BOMBER;
-        }
     }
 
     // Update is called once per frame
@@ -64,7 +55,7 @@ public class EnemyMovement : MonoBehaviour
         Vector2 rotateTowards = Vector3.RotateTowards(transform.up.normalized, direction.normalized, step, 0.0f);
         transform.rotation = Quaternion.LookRotation(Vector3.forward, rotateTowards);
 
-        if (stopToBomb || type == Type.BOMBER && distance <= bombDistance)
+        if (stopToBomb || m_enemy.Type == Enemy.EnemyType.Bomber && distance <= bombDistance)
         {
             if (!stopToBomb)
             {
@@ -81,7 +72,7 @@ public class EnemyMovement : MonoBehaviour
         
         //If is shooter and near player then strafe?
         Vector2 newPos;
-        if (type == Type.SHOOTER && distance <= strafeDistance)
+        if (m_enemy.Type == Enemy.EnemyType.Shooter && distance <= strafeDistance)
         {
             newPos = transform.position + transform.right * moveSpeed * Time.fixedDeltaTime;
         }
