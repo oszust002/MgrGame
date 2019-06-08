@@ -21,10 +21,12 @@ public class Progress : MonoBehaviour
     public bool IsLevelLoading;
     private float m_Score;
     private int currentLevel;
-    
+    private Player m_Player;
+
     // Start is called before the first frame update
     void Start()
     {
+        m_Player = FindObjectOfType<Player>();
         if (instance == null)
         {
             instance = this;
@@ -104,10 +106,20 @@ public class Progress : MonoBehaviour
 
     private IEnumerator LevelUp()
     {
+
+        ApplyReward();
         IsLevelLoading = true;
         yield return new WaitForSeconds(2f);
         
         IsLevelLoading = false;
+    }
+
+    private void ApplyReward()
+    {
+        if (m_Player != null)
+        {
+            m_Player.SetMaxHealth(m_Player.maxHealth + levels[currentLevel].healthBonusReward);
+        }
     }
 
     private void UpdateScoreUI()

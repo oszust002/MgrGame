@@ -253,6 +253,7 @@ MonoBehaviour:
     spawnRate: 2
     finishScore: 10
     endTheGame: 0
+    healthBonusReward: 3
   - enemies:
     - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
     - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
@@ -262,6 +263,7 @@ MonoBehaviour:
     spawnRate: 4
     finishScore: 50
     endTheGame: 0
+    healthBonusReward: 5
   - enemies:
     - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
     - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
@@ -271,6 +273,7 @@ MonoBehaviour:
     spawnRate: 3
     finishScore: 100
     endTheGame: 1
+    healthBonusReward: 0
   enemySpawner: {fileID: 1768359264}
   textScore: {fileID: 1221850340}
   slider: {fileID: 313375075}
@@ -5860,6 +5863,7 @@ MonoBehaviour:
     type: 3}
   deathSound: {fileID: 8300000, guid: 541e0b9054d82b04c9107634e0198f4d, type: 3}
   healthSlider: {fileID: 762928558}
+  maxHealth: 0
 --- !u!1 &1043348901
 GameObject:
   m_ObjectHideFlags: 0
@@ -20819,6 +20823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPowerUps:
   - {fileID: 8581249930259547333, guid: 4db0b5867958522479ade0f80ccfa3af, type: 3}
+  - {fileID: 6103513058110956288, guid: 7914dfb4895c66241b11a812a2277474, type: 3}
   spawnTimeStep: 4
   maxPowerUps: 4
   radius: 20

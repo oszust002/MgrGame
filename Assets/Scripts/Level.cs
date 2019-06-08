@@ -9,4 +9,5 @@ public class Level
     public float spawnRate;
     public float finishScore;
     public bool endTheGame;
+    public int healthBonusReward;
 }
