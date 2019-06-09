@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
 
     public Animator gameOverAnimator;
     public static GameManager instance;
+    public GameObject gameOverInstructions;
+
+    public static bool GameEnded;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -17,16 +21,35 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (GameEnded)
+        {
+            if (Input.GetButton("Fire1"))
+            {
+                GameEnded = false;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            else if (Input.GetButton("Cancel"))
+            {
+                GameEnded = false;
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
+    }
+
     // Update is called once per frame
     public void PlayerDied()
     {
-        StartCoroutine(RestartLevel());
+        StartCoroutine(PlayerDeath());
     }
 
-    private IEnumerator RestartLevel()
+    private IEnumerator PlayerDeath()
     {
+        
         gameOverAnimator.SetTrigger("GameOver");
-        yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        yield return new WaitForSeconds(1.5f);
+        GameEnded = true;
+        
     }
 }

@@ -101,7 +101,7 @@ public class Progress : MonoBehaviour
         IsLevelLoading = true;
         endGameAnimation.SetTrigger("EndGame");
         yield return new WaitForSeconds(4f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.GameEnded = true;
     }
 
     private IEnumerator LevelUp()
