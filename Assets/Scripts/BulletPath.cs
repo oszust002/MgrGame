@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,46 +16,42 @@ public class BulletPath : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.up * speed;
-        
+    }
+
+    private void FixedUpdate()
+    {
+        if (GameManager.gamePaused)
+        {
+            rb.velocity = Vector2.zero;
+        }
+        else
+        {
+            rb.velocity = transform.up * speed;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         var bullet = other.GetComponent<BulletPath>();
-        if (bullet != null && AreSameBulletType(bullet))
+        if (bullet != null && !AreSameBulletType(bullet))
         {
+            Explode();
             return;
         }
         
         if (isEnemyBullet)
         {
             var player = other.GetComponent<Player>();
-            if (player != null)
-            {
-                player.TakeDamage(damage);
-            }
-
-            //Destroy if colliding with something else than enemy
-            var playerController = other.GetComponent<Enemy>();
-            if (playerController == null)
-            {
-                Explode();
-            }
+            if (player == null) return;
+            player.TakeDamage(damage);
+            Explode();
         }
         else
         {
             var component = other.GetComponent<Enemy>();
-            if (component != null)
-            {
-                component.TakeDamage(damage);
-            }
-
-            //Destroy if colliding with something else than player
-            var playerController = other.GetComponent<PlayerController>();
-            if (playerController == null)
-            {
-                Explode();
-            }
+            if (component == null) return;
+            component.TakeDamage(damage);
+            Explode();
         }
     }
 

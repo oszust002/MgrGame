@@ -27,6 +27,10 @@ public class SpecialPower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.gamePaused)
+        {
+            return;
+        }
         transform.localScale += new Vector3(speed * Time.fixedDeltaTime, speed * Time.fixedDeltaTime, 0);
            transform.Rotate(0, 0, rotationSpeed*Time.fixedDeltaTime);
     }

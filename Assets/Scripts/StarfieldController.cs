@@ -17,30 +17,30 @@ public class StarfieldController : MonoBehaviour
     private float xOffset;
     private float yOffset;
     private Transform theCamera;
-    [Range(-0.5f,0.5f)]
-    public float horizontalStarSpeed;
-    [Range(-0.5f,0.5f)]
-    public float verticalStarSpeed;
+    [Range(-0.5f, 0.5f)] public float horizontalStarSpeed;
+    [Range(-0.5f, 0.5f)] public float verticalStarSpeed;
 
     // Start is called before the first frame update
-    void Awake ()
+    private void Awake()
     {
-        Stars = new ParticleSystem.Particle[ maxStars ];
+        Stars = new ParticleSystem.Particle[maxStars];
         Particles = GetComponent<ParticleSystem>();
- 
-        xOffset = FieldWidth * 0.5f;																										// Offset the coordinates to distribute the spread
-        yOffset = FieldHeight * 0.5f;																										// around the object's center
-	
-        for ( int i=0; i<maxStars; i++ )
-        {
-            float randSize = Random.Range( StarSizeRange, StarSizeRange + 1f );						// Randomize star size within parameters
-            float scaledColor = ( true == Colorize ) ? randSize - StarSizeRange : 1f;			// If coloration is desired, color based on size
 
-            Stars[ i ].position = GetRandomInRectangle( FieldWidth, FieldHeight ) + transform.position;
-            Stars[ i ].startSize = starSize * randSize;
-            Stars[ i ].startColor = new Color( 1f, scaledColor, scaledColor, 1f );
+        xOffset = FieldWidth * 0.5f; // Offset the coordinates to distribute the spread
+        yOffset = FieldHeight * 0.5f; // around the object's center
+
+        for (var i = 0; i < maxStars; i++)
+        {
+            var randSize = Random.Range(StarSizeRange, StarSizeRange + 1f); // Randomize star size within parameters
+            var scaledColor =
+                Colorize ? randSize - StarSizeRange : 1f; // If coloration is desired, color based on size
+
+            Stars[i].position = GetRandomInRectangle(FieldWidth, FieldHeight) + transform.position;
+            Stars[i].startSize = starSize * randSize;
+            Stars[i].startColor = new Color(1f, scaledColor, scaledColor, 1f);
         }
-        Particles.SetParticles( Stars, Stars.Length );  																// Write data to the particle system
+
+        Particles.SetParticles(Stars, Stars.Length); // Write data to the particle system
     }
 
     private void Start()
@@ -48,41 +48,46 @@ public class StarfieldController : MonoBehaviour
         theCamera = Camera.main.transform;
     }
 
-    Vector3 GetRandomInRectangle ( float width, float height )
+    private Vector3 GetRandomInRectangle(float width, float height)
     {
-        float x = Random.Range( 0, width );
-        float y = Random.Range( 0, height );
-        return new Vector3 ( x - xOffset , y - yOffset, 0 );
+        var x = Random.Range(0, width);
+        var y = Random.Range(0, height);
+        return new Vector3(x - xOffset, y - yOffset, 0);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        for ( int i=0; i<maxStars; i++ )
+        if (GameManager.gamePaused)
         {
-            Vector3 pos = Stars[ i ].position;
+            return;
+        }
 
-            if ( pos.x < ( theCamera.position.x - xOffset ) )
+        for (var i = 0; i < maxStars; i++)
+        {
+            var pos = Stars[i].position;
+
+            if (pos.x < theCamera.position.x - xOffset)
             {
                 pos.x += FieldWidth;
             }
-            else if ( pos.x > ( theCamera.position.x + xOffset ) )
+            else if (pos.x > theCamera.position.x + xOffset)
             {
                 pos.x -= FieldWidth;
             }
 
-            if ( pos.y < ( theCamera.position.y - yOffset ) )
+            if (pos.y < theCamera.position.y - yOffset)
             {
                 pos.y += FieldHeight;
             }
-            else if ( pos.y > ( theCamera.position.y + yOffset ) )
+            else if (pos.y > theCamera.position.y + yOffset)
             {
                 pos.y -= FieldHeight;
             }
 
-            Stars[ i ].position = pos + Vector3.right * horizontalStarSpeed + Vector3.up * verticalStarSpeed;
+            Stars[i].position = pos + Vector3.right * horizontalStarSpeed + Vector3.up * verticalStarSpeed;
         }
-        Particles.SetParticles( Stars, Stars.Length );
 
+        Particles.SetParticles(Stars, Stars.Length);
     }
 }

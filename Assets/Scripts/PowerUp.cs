@@ -10,6 +10,10 @@ public abstract class PowerUp : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.gamePaused)
+        {
+            return;
+        }
         var distance = Vector3.Distance(transform.position, PlayerController.Position);
         if (distance > 40f)
         {

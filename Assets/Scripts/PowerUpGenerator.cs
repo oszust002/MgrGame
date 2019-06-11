@@ -25,7 +25,7 @@ public class PowerUpGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Progress.instance.IsLevelLoading || GameManager.GameEnded)
+        if (Progress.instance.IsLevelLoading || GameManager.gameEnded)
         {
             return;
         }

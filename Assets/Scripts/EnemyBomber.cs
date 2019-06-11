@@ -30,10 +30,23 @@ public class EnemyBomber : MonoBehaviour
 
     private IEnumerator ExplodeBomb()
     {
-        yield return new WaitForSeconds(timeToDestroy);
+        float timer = 0f;
+        while(timer < timeToDestroy) {
+            while(GameManager.gamePaused) {
+                yield return null;
+            }
+ 
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        
         Collider2D[] overlapCircle = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (var t in overlapCircle)
         {
+            //Have to check if game is paused to not destroy/move everything
+            while(GameManager.gamePaused) {
+                yield return null;
+            }
             var rb = t.GetComponent<Rigidbody2D>();
             if (rb != null)
             {

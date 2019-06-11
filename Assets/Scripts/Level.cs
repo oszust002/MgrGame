@@ -6,6 +6,7 @@ using UnityEngine;
 public class Level
 {
     public List<GameObject> enemies;
+    public List<GameObject> specialEnemies;
     public float spawnRate;
     public float finishScore;
     public bool endTheGame;

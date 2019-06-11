@@ -93,6 +93,9 @@ public class Progress : MonoBehaviour
             }
             
         }
+        /* TODO: If game too easy, use special wave and decrease spawnTime
+         
+         */
         UpdateScoreUI();
     }
 
@@ -101,12 +104,11 @@ public class Progress : MonoBehaviour
         IsLevelLoading = true;
         endGameAnimation.SetTrigger("EndGame");
         yield return new WaitForSeconds(4f);
-        GameManager.GameEnded = true;
+        GameManager.gameEnded = true;
     }
 
     private IEnumerator LevelUp()
     {
-
         ApplyReward();
         IsLevelLoading = true;
         yield return new WaitForSeconds(2f);

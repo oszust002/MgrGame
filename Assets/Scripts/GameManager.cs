@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject gameOverInstructions;
 
-    public static bool GameEnded;
+    public static bool gameEnded;
+    public static bool gamePaused;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,18 +24,29 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameEnded)
+        if (gameEnded)
         {
             if (Input.GetButton("Fire1"))
             {
-                GameEnded = false;
+                gameEnded = false;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
             else if (Input.GetButton("Cancel"))
             {
-                GameEnded = false;
+                gameEnded = false;
                 SceneManager.LoadScene("MainMenu");
             }
+            return;
+        }
+
+        if (Input.GetButton("Cancel"))
+        {
+            if (SceneManager.GetActiveScene().name == "MainMenu")
+            {
+                return;
+            }
+
+            gamePaused = !gamePaused;
         }
     }
 
@@ -49,7 +61,7 @@ public class GameManager : MonoBehaviour
         
         gameOverAnimator.SetTrigger("GameOver");
         yield return new WaitForSeconds(1.5f);
-        GameEnded = true;
+        gameEnded = true;
         
     }
 }

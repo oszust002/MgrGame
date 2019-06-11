@@ -53,7 +53,7 @@ public class PlayerShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Progress.instance.IsLevelLoading)
+        if (Progress.instance.IsLevelLoading || GameManager.gamePaused)
         {
             return;
         }
@@ -70,6 +70,7 @@ public class PlayerShooter : MonoBehaviour
 
         specialPowerImage.fillAmount =
             Mathf.Clamp(specialPowerImage.fillAmount + 1 / specialDelay * Time.fixedDeltaTime, 0, 1);
+        //if fire or clashing fist, apply special power
         if (Input.GetButton("Fire2"))
         {
             if (specialPowerImage.fillAmount >= 1)

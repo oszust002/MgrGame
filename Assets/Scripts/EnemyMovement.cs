@@ -43,7 +43,10 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        if (GameManager.gamePaused)
+        {
+            return;
+        }
         var distance = Vector2.Distance(rb.position, PlayerController.Position);
 
         //Rotate towards player (in 2D it's rotation in Z Axis)
