@@ -49,8 +49,7 @@ public class GameManager : MonoBehaviour
 
             if (gamePaused)
             {
-                pauseMenu.SetActive(false);
-                gamePaused = false;
+                Resume();
             }
             else
             {
@@ -62,6 +61,7 @@ public class GameManager : MonoBehaviour
 
     public void Resume()
     {
+        pauseMenu.SetActive(false);
         gamePaused = false;
     }
 

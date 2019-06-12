@@ -17,6 +17,7 @@ public abstract class PowerUp : MonoBehaviour
         var distance = Vector3.Distance(transform.position, PlayerController.Position);
         if (distance > 40f)
         {
+            PowerUpGenerator.RemovePowerUp();
             Destroy(gameObject);
         }
         transform.Rotate(0f, 0f, Time.fixedDeltaTime * 50f, Space.Self);

@@ -251,8 +251,13 @@ MonoBehaviour:
   - enemies:
     - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
     - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
-    specialEnemies: []
-    spawnRate: 2
+    specialEnemies:
+    - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
+    - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
+    - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
+    - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
+    - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
+    spawnRate: 4
     finishScore: 10
     endTheGame: 0
     healthBonusReward: 3
@@ -262,8 +267,14 @@ MonoBehaviour:
     - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
     - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
     - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
-    specialEnemies: []
-    spawnRate: 4
+    specialEnemies:
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
+    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
+    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
+    spawnRate: 5
     finishScore: 50
     endTheGame: 0
     healthBonusReward: 5
@@ -273,12 +284,22 @@ MonoBehaviour:
     - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
     - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
     - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
-    specialEnemies: []
-    spawnRate: 3
+    specialEnemies:
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
+    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
+    spawnRate: 4
     finishScore: 100
     endTheGame: 1
     healthBonusReward: 0
   enemySpawner: {fileID: 1768359264}
+  hardModeTimeThreshold: 3
+  destroyedEnemiesThreshold: 3
+  hardModeTime: 10
   textScore: {fileID: 1221850340}
   slider: {fileID: 313375075}
   endGameAnimation: {fileID: 1510102200}
@@ -967,12 +988,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 51.3
+  m_fontSize: 107.4
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 120
   m_fontStyle: 1
   m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
@@ -1016,11 +1037,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1078,8 +1099,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 22.82}
-  m_SizeDelta: {x: 293.82, y: 57.33}
+  m_AnchoredPosition: {x: 0, y: 32}
+  m_SizeDelta: {x: 400, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &606178124
 MonoBehaviour:
@@ -16266,8 +16287,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -18}
-  m_SizeDelta: {x: 293.82, y: 57.33}
+  m_AnchoredPosition: {x: 0, y: -60}
+  m_SizeDelta: {x: 400, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1306029973
 MonoBehaviour:
@@ -21309,12 +21330,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 51.3
+  m_fontSize: 88.25
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 130
   m_fontStyle: 1
   m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
@@ -21358,11 +21379,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -21420,7 +21441,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 92, y: 100}
+  m_SizeDelta: {x: 92, y: 242.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1658466378
 CanvasRenderer:

@@ -11,6 +11,13 @@ public class Progress : MonoBehaviour
 
     public List<Level> levels;
     public EnemySpawner enemySpawner;
+    
+    [Header("Hard Mode options")]
+    public float hardModeTimeThreshold = 3f;
+    public int destroyedEnemiesThreshold = 3;
+    public float hardModeTime = 10f;
+    private HardModeHandler m_HardModeHandler;
+    private float m_HardModeStartTime = 0f;
 
     [Header("UI")]
     public TextMeshProUGUI textScore;
@@ -22,10 +29,12 @@ public class Progress : MonoBehaviour
     private float m_Score;
     private int currentLevel;
     private Player m_Player;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        m_HardModeHandler = new HardModeHandler();
         m_Player = FindObjectOfType<Player>();
         if (instance == null)
         {
@@ -55,6 +64,7 @@ public class Progress : MonoBehaviour
         m_Score += amount;
         if (m_Score >= levels[currentLevel].finishScore)
         {
+            m_HardModeHandler.Disable();
             var enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (var enemy in enemies)
             {
@@ -90,13 +100,24 @@ public class Progress : MonoBehaviour
             {
                 StartCoroutine(LevelUp());
                 LoadLevel(currentLevel + 1);
-            }
-            
+            }   
         }
-        /* TODO: If game too easy, use special wave and decrease spawnTime
-         
-         */
+
+        CheckHardMode();
         UpdateScoreUI();
+    }
+
+    private void CheckHardMode()
+    {
+        
+        if (!m_HardModeHandler.hardModeEnabled)
+        {
+            m_HardModeHandler.Tick();
+            if (!m_HardModeHandler.hardModeEnabled) return;
+            m_HardModeStartTime = Time.time;
+            enemySpawner.enemies = levels[currentLevel].specialEnemies;
+            enemySpawner.spawnTime = levels[currentLevel].spawnRate / 2;
+        }
     }
 
     private IEnumerator EndTheGame()
@@ -133,6 +154,56 @@ public class Progress : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (m_HardModeHandler.hardModeEnabled && Time.time - m_HardModeStartTime >= hardModeTime)
+        {
+            enemySpawner.enemies = levels[currentLevel].enemies;
+            enemySpawner.spawnTime = levels[currentLevel].spawnRate;
+            m_HardModeHandler.Disable();
+        }
+    }
+}
+
+internal class HardModeHandler
+{
+    private float m_HardModeCountTime;
+    private int m_DestroyedEnemies;
+    public bool hardModeEnabled;
+    
+    public void Tick()
+    {
+        if (hardModeEnabled)
+        {
+            return;
+        }
+        if (m_DestroyedEnemies == 0)
+        {
+            m_DestroyedEnemies++;
+            m_HardModeCountTime = Time.time;
+        }
+        else if (Time.time - m_HardModeCountTime < Progress.instance.hardModeTimeThreshold)
+        {
+            m_DestroyedEnemies++;
+            if (m_DestroyedEnemies == Progress.instance.destroyedEnemiesThreshold)
+            {
+                hardModeEnabled = true;
+            }
+        }
+        else
+        {
+            m_DestroyedEnemies = 0;
+            m_HardModeCountTime = 0f;
+        }
+    }
+
+    public void Enable()
+    {
+        hardModeEnabled = true;
+    }
+
+    public void Disable()
+    {
+        m_DestroyedEnemies = 0;
+        m_HardModeCountTime = 0f;
+        hardModeEnabled = false;
     }
 }

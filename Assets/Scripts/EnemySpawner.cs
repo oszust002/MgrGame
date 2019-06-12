@@ -13,7 +13,10 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (enemies == null)
+        {
+            enemies = new List<GameObject>();
+        }
     }
 
     // Update is called once per frame
@@ -32,8 +35,8 @@ public class EnemySpawner : MonoBehaviour
                 //player position +- random x/y such as x^2+y^2=radius^2
                 spawnPosition += Random.insideUnitCircle.normalized * spawnRadius;
                 Instantiate(enemy, spawnPosition, Quaternion.identity);
-                m_NextSpawnTime = Time.time + spawnTime;
             }
+            m_NextSpawnTime = Time.time + spawnTime;
         }
     }
 }
