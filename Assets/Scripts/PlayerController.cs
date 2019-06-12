@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Progress.instance.IsLevelLoading || GameManager.gamePaused)
+        if (Progress.instance.IsLevelLoading || GameManager.instance.gamePaused)
         {
             rb.velocity = Vector2.zero;
             return;

@@ -10,7 +10,7 @@ public abstract class PowerUp : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.gamePaused)
+        if (GameManager.instance.gamePaused)
         {
             return;
         }

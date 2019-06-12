@@ -26,7 +26,7 @@ public class EnemyShooter : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.gameEnded)
+        if (GameManager.instance.gameEnded)
         {
             return;
         }

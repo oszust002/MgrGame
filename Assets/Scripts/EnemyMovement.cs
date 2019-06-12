@@ -43,7 +43,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (GameManager.gamePaused)
+        if (GameManager.instance.gamePaused)
         {
             return;
         }

@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
 
     public Animator gameOverAnimator;
     public static GameManager instance;
-    public GameObject gameOverInstructions;
+    public GameObject pauseMenu;
 
-    public static bool gameEnded;
-    public static bool gamePaused;
+    public bool gameEnded;
+    public bool gamePaused;
 
     // Start is called before the first frame update
     void Awake()
@@ -34,20 +34,40 @@ public class GameManager : MonoBehaviour
             else if (Input.GetButton("Cancel"))
             {
                 gameEnded = false;
-                SceneManager.LoadScene("MainMenu");
+                ExitToMenu();
+                
             }
             return;
         }
 
-        if (Input.GetButton("Cancel"))
+        if (Input.GetButtonDown("Cancel"))
         {
             if (SceneManager.GetActiveScene().name == "MainMenu")
             {
                 return;
             }
 
-            gamePaused = !gamePaused;
+            if (gamePaused)
+            {
+                pauseMenu.SetActive(false);
+                gamePaused = false;
+            }
+            else
+            {
+                pauseMenu.SetActive(true);
+                gamePaused = true;
+            }
         }
+    }
+
+    public void Resume()
+    {
+        gamePaused = false;
+    }
+
+    public void ExitToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     // Update is called once per frame

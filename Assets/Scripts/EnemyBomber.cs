@@ -32,7 +32,7 @@ public class EnemyBomber : MonoBehaviour
     {
         float timer = 0f;
         while(timer < timeToDestroy) {
-            while(GameManager.gamePaused) {
+            while(GameManager.instance.gamePaused) {
                 yield return null;
             }
  
@@ -44,7 +44,7 @@ public class EnemyBomber : MonoBehaviour
         foreach (var t in overlapCircle)
         {
             //Have to check if game is paused to not destroy/move everything
-            while(GameManager.gamePaused) {
+            while(GameManager.instance.gamePaused) {
                 yield return null;
             }
             var rb = t.GetComponent<Rigidbody2D>();

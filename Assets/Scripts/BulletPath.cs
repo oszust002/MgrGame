@@ -20,7 +20,7 @@ public class BulletPath : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.gamePaused)
+        if (GameManager.instance.gamePaused)
         {
             rb.velocity = Vector2.zero;
         }

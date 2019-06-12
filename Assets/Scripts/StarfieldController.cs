@@ -58,10 +58,6 @@ public class StarfieldController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (GameManager.gamePaused)
-        {
-            return;
-        }
 
         for (var i = 0; i < maxStars; i++)
         {

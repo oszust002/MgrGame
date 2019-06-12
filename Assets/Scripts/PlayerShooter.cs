@@ -53,7 +53,7 @@ public class PlayerShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Progress.instance.IsLevelLoading || GameManager.gamePaused)
+        if (Progress.instance.IsLevelLoading || GameManager.instance.gamePaused)
         {
             return;
         }
