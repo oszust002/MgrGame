@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
     public Animator gameOverAnimator;
     public static GameManager instance;
     public GameObject pauseMenu;
@@ -35,32 +34,43 @@ public class GameManager : MonoBehaviour
             {
                 gameEnded = false;
                 ExitToMenu();
-                
             }
+
             return;
         }
 
-        if (Input.GetButtonDown("Cancel"))
+        if (SceneManager.GetActiveScene().name == "MainMenu")
         {
-            if (SceneManager.GetActiveScene().name == "MainMenu")
-            {
-                return;
-            }
+            return;
+        }
 
+        if (!gamePaused && Input.GetButtonDown("Options"))
+        {
+            Pause();
+        }
+        else if (gamePaused && (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Options")))
+        {
             if (gamePaused)
             {
                 Resume();
             }
-            else
-            {
-                pauseMenu.SetActive(true);
-                gamePaused = true;
-            }
         }
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+        }
+    }
+
+    private void Pause()
+    {
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+        gamePaused = true;
     }
 
     public void Resume()
     {
+        Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         gamePaused = false;
     }
@@ -78,10 +88,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator PlayerDeath()
     {
-        
         gameOverAnimator.SetTrigger("GameOver");
         yield return new WaitForSeconds(1.5f);
         gameEnded = true;
-        
     }
 }

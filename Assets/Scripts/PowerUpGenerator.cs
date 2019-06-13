@@ -7,7 +7,7 @@ public class PowerUpGenerator : MonoBehaviour
 
     public List<GameObject> weaponPowerUps;
     public float spawnTimeStep = 4f;
-    public float maxPowerUps = 4f;
+    public float maxPowerUps = 8f;
     public float radius = 2f;
     private static int _existingPowerUpsCount;
     private float m_NextPowerUp;

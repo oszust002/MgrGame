@@ -174,7 +174,9 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: a5db1d03a54f9e94bb89c7a58e518b57, type: 3}
   collisionDamage: 92
   spriteRenderer: {fileID: 564658930}
-  killReward: 1
+  killReward: 2
+  enemyShooter: {fileID: 0}
+  enemyBomber: {fileID: 0}
 --- !u!114 &689453578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionRadius: 2
-  timeToDestroy: 2
+  timeToDestroy: 3
   damage: 20
   explosionForce: 5
   explosionAnimation: {fileID: 8943279116600861974}

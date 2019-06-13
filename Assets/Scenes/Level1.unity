@@ -252,15 +252,13 @@ MonoBehaviour:
     - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
     - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
     specialEnemies:
-    - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
-    - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
-    - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
-    - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
-    - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
+    - {fileID: 10457861192546957, guid: 5ee8910f1d1ed7d4c807b76fa7a4d141, type: 3}
+    - {fileID: 10457861192546957, guid: 5ee8910f1d1ed7d4c807b76fa7a4d141, type: 3}
+    - {fileID: 10457861192546957, guid: 5ee8910f1d1ed7d4c807b76fa7a4d141, type: 3}
     spawnRate: 4
     finishScore: 10
     endTheGame: 0
-    healthBonusReward: 3
+    healthBonusReward: 10
   - enemies:
     - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
     - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
@@ -269,31 +267,84 @@ MonoBehaviour:
     - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
     specialEnemies:
     - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
-    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
-    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 4838120652947969309, guid: 5afef094f1e018641adb436858952b97, type: 3}
+    - {fileID: 10457861192546957, guid: 5ee8910f1d1ed7d4c807b76fa7a4d141, type: 3}
     - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
-    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
-    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
-    spawnRate: 5
+    spawnRate: 6
     finishScore: 50
     endTheGame: 0
-    healthBonusReward: 5
+    healthBonusReward: 10
   - enemies:
     - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
-    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
+    - {fileID: 2821369016920024909, guid: 16f074c40b33f6a4087421c6430628ae, type: 3}
     - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
     - {fileID: 1960219828984031089, guid: 6eee6edcbfded694cbb9b1ebda51ab0e, type: 3}
     - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
     specialEnemies:
     - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
-    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
-    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
-    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
-    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
-    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
-    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
-    spawnRate: 4
+    - {fileID: 10457861192546957, guid: 5ee8910f1d1ed7d4c807b76fa7a4d141, type: 3}
+    - {fileID: 8814063202125886333, guid: cab4ff7042902d74d87b5ccb64c80047, type: 3}
+    - {fileID: 4838120652947969309, guid: 5afef094f1e018641adb436858952b97, type: 3}
+    - {fileID: 3278130054328204538, guid: ab63e66ce9a616d459c65b5a9e9a74c2, type: 3}
+    spawnRate: 7
     finishScore: 100
+    endTheGame: 0
+    healthBonusReward: 30
+  - enemies:
+    - {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
+    - {fileID: 2821369016920024909, guid: 16f074c40b33f6a4087421c6430628ae, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 2821369016920024909, guid: 16f074c40b33f6a4087421c6430628ae, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    specialEnemies:
+    - {fileID: 4838120652947969309, guid: 5afef094f1e018641adb436858952b97, type: 3}
+    - {fileID: 2821369016920024909, guid: 16f074c40b33f6a4087421c6430628ae, type: 3}
+    - {fileID: 8814063202125886333, guid: cab4ff7042902d74d87b5ccb64c80047, type: 3}
+    - {fileID: 2821369016920024909, guid: 16f074c40b33f6a4087421c6430628ae, type: 3}
+    - {fileID: 3278130054328204538, guid: ab63e66ce9a616d459c65b5a9e9a74c2, type: 3}
+    spawnRate: 8
+    finishScore: 250
+    endTheGame: 0
+    healthBonusReward: 20
+  - enemies:
+    - {fileID: 2821369016920024909, guid: 16f074c40b33f6a4087421c6430628ae, type: 3}
+    - {fileID: 2821369016920024909, guid: 16f074c40b33f6a4087421c6430628ae, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 10457861192546957, guid: 5ee8910f1d1ed7d4c807b76fa7a4d141, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 2821369016920024909, guid: 16f074c40b33f6a4087421c6430628ae, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    specialEnemies:
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    - {fileID: 10457861192546957, guid: 5ee8910f1d1ed7d4c807b76fa7a4d141, type: 3}
+    - {fileID: 8814063202125886333, guid: cab4ff7042902d74d87b5ccb64c80047, type: 3}
+    - {fileID: 4838120652947969309, guid: 5afef094f1e018641adb436858952b97, type: 3}
+    - {fileID: 3278130054328204538, guid: ab63e66ce9a616d459c65b5a9e9a74c2, type: 3}
+    - {fileID: 3278130054328204538, guid: ab63e66ce9a616d459c65b5a9e9a74c2, type: 3}
+    spawnRate: 8
+    finishScore: 500
+    endTheGame: 1
+    healthBonusReward: 0
+  - enemies:
+    - {fileID: 4838120652947969309, guid: 5afef094f1e018641adb436858952b97, type: 3}
+    - {fileID: 2821369016920024909, guid: 16f074c40b33f6a4087421c6430628ae, type: 3}
+    - {fileID: 2821369016920024909, guid: 16f074c40b33f6a4087421c6430628ae, type: 3}
+    - {fileID: 4838120652947969309, guid: 5afef094f1e018641adb436858952b97, type: 3}
+    - {fileID: 8814063202125886333, guid: cab4ff7042902d74d87b5ccb64c80047, type: 3}
+    - {fileID: 2821369016920024909, guid: 16f074c40b33f6a4087421c6430628ae, type: 3}
+    - {fileID: 689453575, guid: 374d22b03111d714aa678025b86ffd02, type: 3}
+    specialEnemies:
+    - {fileID: 3278130054328204538, guid: ab63e66ce9a616d459c65b5a9e9a74c2, type: 3}
+    - {fileID: 8814063202125886333, guid: cab4ff7042902d74d87b5ccb64c80047, type: 3}
+    - {fileID: 8814063202125886333, guid: cab4ff7042902d74d87b5ccb64c80047, type: 3}
+    - {fileID: 4838120652947969309, guid: 5afef094f1e018641adb436858952b97, type: 3}
+    - {fileID: 3278130054328204538, guid: ab63e66ce9a616d459c65b5a9e9a74c2, type: 3}
+    - {fileID: 3278130054328204538, guid: ab63e66ce9a616d459c65b5a9e9a74c2, type: 3}
+    - {fileID: 8814063202125886333, guid: cab4ff7042902d74d87b5ccb64c80047, type: 3}
+    - {fileID: 3278130054328204538, guid: ab63e66ce9a616d459c65b5a9e9a74c2, type: 3}
+    spawnRate: 10
+    finishScore: 500
     endTheGame: 1
     healthBonusReward: 0
   enemySpawner: {fileID: 1768359264}
@@ -316,7 +367,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &159320808
 GameObject:
@@ -403,7 +454,7 @@ Transform:
   - {fileID: 1166510080}
   - {fileID: 1416946255}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &159320812
 MonoBehaviour:
@@ -523,7 +574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -662,7 +713,7 @@ Transform:
   m_Children:
   - {fileID: 946773571}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &449505544
 GameObject:
@@ -1356,6 +1407,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675937418}
   m_CullTransparentMesh: 0
+--- !u!1001 &706263018
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8652062253853986793, guid: 966e67b8b5bdc7b46b9148f493421eab,
+        type: 3}
+      propertyPath: m_Name
+      value: Shooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652062253853986707, guid: 966e67b8b5bdc7b46b9148f493421eab,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652062253853986707, guid: 966e67b8b5bdc7b46b9148f493421eab,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.03445076
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652062253853986707, guid: 966e67b8b5bdc7b46b9148f493421eab,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.010487213
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652062253853986707, guid: 966e67b8b5bdc7b46b9148f493421eab,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652062253853986707, guid: 966e67b8b5bdc7b46b9148f493421eab,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652062253853986707, guid: 966e67b8b5bdc7b46b9148f493421eab,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652062253853986707, guid: 966e67b8b5bdc7b46b9148f493421eab,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652062253853986707, guid: 966e67b8b5bdc7b46b9148f493421eab,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652062253853986707, guid: 966e67b8b5bdc7b46b9148f493421eab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652062253853986707, guid: 966e67b8b5bdc7b46b9148f493421eab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652062253853986707, guid: 966e67b8b5bdc7b46b9148f493421eab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 966e67b8b5bdc7b46b9148f493421eab, type: 3}
 --- !u!1 &762928556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,7 +1527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1507,7 +1627,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &819521777
 GameObject:
@@ -6474,7 +6594,7 @@ Transform:
   - {fileID: 860857932}
   - {fileID: 214391829}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1023396989
 CircleCollider2D:
@@ -21735,7 +21855,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1722523988
 GameObject:
@@ -21844,7 +21964,7 @@ MonoBehaviour:
   - {fileID: 8581249930259547333, guid: 4db0b5867958522479ade0f80ccfa3af, type: 3}
   - {fileID: 6103513058110956288, guid: 7914dfb4895c66241b11a812a2277474, type: 3}
   spawnTimeStep: 4
-  maxPowerUps: 4
+  maxPowerUps: 8
   radius: 20
 --- !u!4 &1763200556
 Transform:
@@ -21858,7 +21978,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1768359263
 GameObject:
@@ -21908,7 +22028,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1822223419
 GameObject:
@@ -22279,7 +22399,7 @@ RectTransform:
   - {fileID: 1239606858}
   - {fileID: 1658466377}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -22497,7 +22617,7 @@ PrefabInstance:
     - target: {fileID: 1960219828984031086, guid: 6eee6edcbfded694cbb9b1ebda51ab0e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1960219828984031086, guid: 6eee6edcbfded694cbb9b1ebda51ab0e,
         type: 3}
@@ -22566,7 +22686,7 @@ PrefabInstance:
     - target: {fileID: 8581249930259547329, guid: 4db0b5867958522479ade0f80ccfa3af,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8581249930259547329, guid: 4db0b5867958522479ade0f80ccfa3af,
         type: 3}
