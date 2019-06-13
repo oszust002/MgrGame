@@ -59,7 +59,7 @@ public class EnemyMovement : MonoBehaviour
         {
             if (!stopToBomb)
             {
-                GetComponent<EnemyBomber>().StartBombing();
+                m_enemy.enemyBomber.StartBombing();
                 stopToBomb = true;
             }
             return;
