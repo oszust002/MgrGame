@@ -129,7 +129,7 @@ Transform:
   m_GameObject: {fileID: 8814063202125886333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.42, y: -0.002, z: -0.010487213}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 2284455096170081250}
   m_Father: {fileID: 0}
@@ -195,7 +195,7 @@ MonoBehaviour:
   repelRange: 3
   repelForce: 5
   strafeDistance: 5
-  bombDistance: 2
+  bombDistance: 4
 --- !u!58 &987387080984974415
 CircleCollider2D:
   m_ObjectHideFlags: 0
