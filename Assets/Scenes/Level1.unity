@@ -21896,8 +21896,8 @@ MonoBehaviour:
   - {fileID: 6103513058110956288, guid: 7914dfb4895c66241b11a812a2277474, type: 3}
   - {fileID: 3338316095023397743, guid: 40fd649f963bd0048ad7348387eccdb8, type: 3}
   - {fileID: 8111222311787753248, guid: 7222acf5d5439424da484ae462b2deb4, type: 3}
-  spawnTimeStep: 4
-  maxPowerUps: 8
+  spawnTimeStep: 2
+  maxPowerUps: 10
   radius: 20
 --- !u!4 &1763200556
 Transform:
@@ -22515,7 +22515,7 @@ PrefabInstance:
     - target: {fileID: 8581249930259547329, guid: 4db0b5867958522479ade0f80ccfa3af,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.4
+      value: -23.4
       objectReference: {fileID: 0}
     - target: {fileID: 8581249930259547329, guid: 4db0b5867958522479ade0f80ccfa3af,
         type: 3}
