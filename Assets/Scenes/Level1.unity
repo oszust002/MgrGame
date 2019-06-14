@@ -6570,7 +6570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireStartPoint: {fileID: 214391829}
-  currentWeapon: {fileID: 11400000, guid: d3a0636593766cc4e9d4cbdb311abc45, type: 2}
+  currentWeapon: {fileID: 11400000, guid: 00c1267d77669f24d80542899fa53f2d, type: 2}
   weaponImage: {fileID: 1853023491}
   specialPowerImage: {fileID: 1239606859}
   specialPowerPrefab: {fileID: 8163538890658032549, guid: 913f038895d212a45b3886f946d466d4,
@@ -21894,6 +21894,7 @@ MonoBehaviour:
   weaponPowerUps:
   - {fileID: 8581249930259547333, guid: 4db0b5867958522479ade0f80ccfa3af, type: 3}
   - {fileID: 6103513058110956288, guid: 7914dfb4895c66241b11a812a2277474, type: 3}
+  - {fileID: 3338316095023397743, guid: 40fd649f963bd0048ad7348387eccdb8, type: 3}
   spawnTimeStep: 4
   maxPowerUps: 8
   radius: 20
