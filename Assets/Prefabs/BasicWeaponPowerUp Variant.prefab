@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8959459068629136871
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 920631230936799943, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_Name
+      value: BasicWeaponPowerUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799939, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799939, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799939, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.4827113
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799939, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799939, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799939, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799939, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799939, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799939, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799939, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799939, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799942, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 59cbf58be79ecc949ba73a754b36f346,
+        type: 3}
+    - target: {fileID: 920631230936799942, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799942, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799942, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799940, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: powerUpWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 00c1267d77669f24d80542899fa53f2d,
+        type: 2}
+    - target: {fileID: 920631230936799941, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799941, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799941, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 920631230936799941, guid: 93c747a554baf894bad0ec050fce791c,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1.28
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 93c747a554baf894bad0ec050fce791c, type: 3}
