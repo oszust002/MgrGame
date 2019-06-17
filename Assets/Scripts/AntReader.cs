@@ -22,6 +22,7 @@ public class AntReader : MonoBehaviour
 
     public byte userUserRadioFreq = 57; // RF Frequency + 2400 MHz
 
+    //Network key is available from ANT+ member account
     static readonly byte[] USER_NETWORK_KEY = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
     static readonly byte USER_NETWORK_NUM = 0; // The network key is assigned to this network number
 
@@ -36,6 +37,8 @@ public class AntReader : MonoBehaviour
     private double m_LastRr;
     private double m_RmssdHrvSqaured;
     private double m_InitBeatCount = -1;
+
+    public event OnNewHeartBeat onNewHeartBeat;
 
     // Start is called before the first frame update
     private void Awake()
@@ -143,7 +146,9 @@ public class AntReader : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+
+
+    public delegate void OnNewHeartBeat(HeartRateResponse heartRateResponse);
 
     void ChannelResponse(ANT_Response response)
     {
@@ -190,37 +195,41 @@ public class AntReader : MonoBehaviour
 
         int hr = dataPayload[7];
         var response = HeartRateResponse.builder(hr, currBeatCount, currBeatTime);
-        
-
-        //if new heart beat and not first then calculate RR
-        if (m_HeartBeatCount < response.heartRateBeatCount && m_LastHeartBeatEventTime > 0)
+        AddRrParameters(response);
+        var heartRateResponse = response.Build();
+        if (m_HeartBeatCount < heartRateResponse.HeartRateBeatCount)
         {
-            CalculateHrv(response);
+            onNewHeartBeat?.Invoke(heartRateResponse);
         }
+        
 
         m_LastHeartBeatEventTime = response.lastHeartRateBeatTime;
         m_HeartBeatCount = response.heartRateBeatCount;
-        Debug.Log(response);
+        Debug.Log(heartRateResponse);
     }
 
-    private void CalculateHrv(HeartRateResponse.Builder response)
+    private void AddRrParameters(HeartRateResponse.Builder response)
     {
-        var rr = response.lastHeartRateBeatTime - m_LastHeartBeatEventTime;
-        rr = rr * 1000 / 1024;
-
-        if (response.heartRateBeatCount >= 2)
+        //if new heart beat and not first then recalculate RR and HRV
+        if (m_HeartBeatCount < response.heartRateBeatCount && m_LastHeartBeatEventTime > 0)
         {
-            var newrmssdHrvSquared = ((response.heartRateBeatCount - 2) * m_RmssdHrvSqaured + Math.Pow(rr - m_LastRr, 2)) /
-                                (response.heartRateBeatCount - 1);
-            response.WithRmssdSquared(newrmssdHrvSquared);
-            m_RmssdHrvSqaured = newrmssdHrvSquared;
-            
+            var rr = response.lastHeartRateBeatTime - m_LastHeartBeatEventTime;
+            rr = rr * 1000 / 1024;
+
+            if (response.heartRateBeatCount >= 2)
+            {
+                var newrmssdHrvSquared = ((response.heartRateBeatCount - 2) * m_RmssdHrvSqaured + Math.Pow(rr - m_LastRr, 2)) /
+                                         (response.heartRateBeatCount - 1);
+                m_RmssdHrvSqaured = newrmssdHrvSquared;
+            }
+
+            var heartRateResponse = response.WithRr(m_RmssdHrvSqaured).Build();
+            Debug.Log(heartRateResponse.ToString());
+
+            m_LastRr = rr;
         }
 
-        var heartRateResponse = response.WithRr(m_RmssdHrvSqaured).Build();
-        Debug.Log(heartRateResponse.ToString());
-
-        m_LastRr = rr;
+        response.WithRr(m_LastRr).WithRmssdSquared(m_RmssdHrvSqaured);
     }
 
     private double GetBeatTime(byte[] dataPayload)

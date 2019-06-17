@@ -3,17 +3,21 @@ using System;
 public class HeartRateResponse
 {
     public readonly int heartRate;
-    public readonly double heartRateBeatCount;
+    private readonly double m_HeartRateBeatCount;
     public readonly double lastHeartRateBeatTime;
     public readonly double lastRr;
     private readonly double m_RmssdHrvSquared;
     public double RmssdHrv => Math.Sqrt(m_RmssdHrvSquared);
+
+    public ulong HeartRateBeatCount => (ulong) m_HeartRateBeatCount;
+
+    public bool IsFirstHeartBeat => HeartRateBeatCount < 2;
     public double BeatTimeInMs => lastHeartRateBeatTime * 1000 / 1024;
 
     private HeartRateResponse(Builder builder)
     {
         heartRate = builder.heartRate;
-        heartRateBeatCount = builder.heartRateBeatCount;
+        m_HeartRateBeatCount = builder.heartRateBeatCount;
         lastHeartRateBeatTime = builder.lastHeartRateBeatTime;
         lastRr = builder.lastRr;
         m_RmssdHrvSquared = builder.rmssdHrvSquared;
@@ -27,7 +31,7 @@ public class HeartRateResponse
     public override string ToString()
     {
         return "HR: " + heartRate +
-               ", HR Beat Count: " + heartRateBeatCount
+               ", HR Beat Count: " + m_HeartRateBeatCount
                + ", Last HR Beat Time: " + lastHeartRateBeatTime 
                + ", Last RR: " + lastRr 
                + ", Last RMSSD HRV: " + RmssdHrv;
@@ -55,9 +59,9 @@ public class HeartRateResponse
             return this;
         }
 
-        public Builder WithRmssdSquared(double rmssdHRVSquared)
+        public Builder WithRmssdSquared(double rmssdHrvSquared)
         {
-            this.rmssdHrvSquared = rmssdHRVSquared;
+            this.rmssdHrvSquared = rmssdHrvSquared;
             return this;
         }
 
