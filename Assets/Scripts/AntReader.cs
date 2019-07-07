@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Numerics;
-using System.Runtime.InteropServices;
 using System.Text;
 using ANT_Managed_Library;
 using UnityEngine;
@@ -35,7 +31,6 @@ public class AntReader : MonoBehaviour
     private double m_HeartBeatCount;
 
     private double m_LastRr;
-    private double m_RmssdHrvSqaured;
     private double m_InitBeatCount = -1;
 
     public event OnNewHeartBeat onNewHeartBeat;
@@ -202,7 +197,6 @@ public class AntReader : MonoBehaviour
             onNewHeartBeat?.Invoke(heartRateResponse);
         }
         
-
         m_LastHeartBeatEventTime = response.lastHeartRateBeatTime;
         m_HeartBeatCount = response.heartRateBeatCount;
         Debug.Log(heartRateResponse);
@@ -216,20 +210,10 @@ public class AntReader : MonoBehaviour
             var rr = response.lastHeartRateBeatTime - m_LastHeartBeatEventTime;
             rr = rr * 1000 / 1024;
 
-            if (response.heartRateBeatCount >= 2)
-            {
-                var newrmssdHrvSquared = ((response.heartRateBeatCount - 2) * m_RmssdHrvSqaured + Math.Pow(rr - m_LastRr, 2)) /
-                                         (response.heartRateBeatCount - 1);
-                m_RmssdHrvSqaured = newrmssdHrvSquared;
-            }
-
-            var heartRateResponse = response.WithRr(m_RmssdHrvSqaured).Build();
-            Debug.Log(heartRateResponse.ToString());
-
             m_LastRr = rr;
         }
 
-        response.WithRr(m_LastRr).WithRmssdSquared(m_RmssdHrvSqaured);
+        response.WithRr(m_LastRr);
     }
 
     private double GetBeatTime(byte[] dataPayload)

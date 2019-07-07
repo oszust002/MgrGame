@@ -6,8 +6,6 @@ public class HeartRateResponse
     private readonly double m_HeartRateBeatCount;
     public readonly double lastHeartRateBeatTime;
     public readonly double lastRr;
-    private readonly double m_RmssdHrvSquared;
-    public double RmssdHrv => Math.Sqrt(m_RmssdHrvSquared);
 
     public ulong HeartRateBeatCount => (ulong) m_HeartRateBeatCount;
 
@@ -20,7 +18,6 @@ public class HeartRateResponse
         m_HeartRateBeatCount = builder.heartRateBeatCount;
         lastHeartRateBeatTime = builder.lastHeartRateBeatTime;
         lastRr = builder.lastRr;
-        m_RmssdHrvSquared = builder.rmssdHrvSquared;
     }
 
     public static Builder builder(int heartRate, double heartRateBeatCount, double lastHeartRateBeatTime)
@@ -32,9 +29,8 @@ public class HeartRateResponse
     {
         return "HR: " + heartRate +
                ", HR Beat Count: " + m_HeartRateBeatCount
-               + ", Last HR Beat Time: " + lastHeartRateBeatTime 
-               + ", Last RR: " + lastRr 
-               + ", Last RMSSD HRV: " + RmssdHrv;
+               + ", Last HR Beat Time: " + lastHeartRateBeatTime
+               + ", Last RR: " + lastRr;
     }
     
     
@@ -44,7 +40,6 @@ public class HeartRateResponse
         public double heartRateBeatCount;
         public double lastHeartRateBeatTime;
         public double lastRr;
-        public double rmssdHrvSquared;
 
         public Builder(int heartRate, double heartRateBeatCount, double lastHeartRateBeatTime)
         {
@@ -56,12 +51,6 @@ public class HeartRateResponse
         public Builder WithRr(double rr)
         {
             lastRr = rr;
-            return this;
-        }
-
-        public Builder WithRmssdSquared(double rmssdHrvSquared)
-        {
-            this.rmssdHrvSquared = rmssdHrvSquared;
             return this;
         }
 
