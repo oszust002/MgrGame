@@ -1,5 +1,5 @@
-using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -9,7 +9,8 @@ public class ClassifierApiManager : MonoBehaviour
     public HeartRateManager heartRateManager;
     public float emotionAskTime = 5;
     private float m_Time = 0;
-    private Emotion m_LastEmotion;
+    private EmotionResponse m_LastEmotionResponse;
+    public bool enabled;
     
     [HideInInspector]
     public bool isNewEmotionSinceLastGet = false;
@@ -21,6 +22,10 @@ public class ClassifierApiManager : MonoBehaviour
 
     private void Update()
     {
+        if (!enabled)
+        {
+            return;
+        }
         if (m_Time >= 0)
         {
             m_Time -= Time.deltaTime;
@@ -32,15 +37,15 @@ public class ClassifierApiManager : MonoBehaviour
         }
     }
 
-    public Emotion GetLastEmotion()
+    public EmotionResponse GetLastEmotion()
     {
         isNewEmotionSinceLastGet = false;
-        return m_LastEmotion;
+        return m_LastEmotionResponse;
     }
 
     private IEnumerator AskForEmotion()
     {
-        var rrArray = heartRateManager.RrArray;
+        var rrArray = heartRateManager.RrArray.Select(rr => rr/1000).ToArray();
         var hrArray = heartRateManager.HrArray;
         var requestBody = new RequestBody {hr = hrArray, rr = rrArray};
         
@@ -54,8 +59,8 @@ public class ClassifierApiManager : MonoBehaviour
             }
             var result = req.downloadHandler.data;
             var json = System.Text.Encoding.Default.GetString(result);
-            var emotion = JsonUtility.FromJson<Emotion>(json);
-            m_LastEmotion = emotion;
+            var emotion = JsonUtility.FromJson<EmotionResponse>(json);
+            m_LastEmotionResponse = emotion;
             isNewEmotionSinceLastGet = true;
         }
     }

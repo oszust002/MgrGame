@@ -47,6 +47,17 @@ public class EmotionManager : MonoBehaviour
         calibrationPhase = false;
     }
 
+    public Emotion GetEmotion()
+    {
+        var emotion = new Emotion(classifierApiManager.GetLastEmotion());
+        if (calibrationPhase)
+        {
+            return emotion;
+        }
+        emotion.Tune(m_AccelerationHandler.GetCurrentState());
+        return emotion;
+    }
+
     private void HandleNewAcceleration(float accelerationmagnitude)
     {
         if (m_ReadCalibrationValues && calibrationPhase)

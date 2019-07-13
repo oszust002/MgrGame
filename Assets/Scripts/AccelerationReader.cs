@@ -18,7 +18,6 @@ public class AccelerationReader : MonoBehaviour
 
     private void Start()
     {
-        
         InvokeRepeating(nameof(ReadData), 0.5f, 1.0f/frequency);
     }
     
