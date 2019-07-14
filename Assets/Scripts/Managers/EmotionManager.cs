@@ -17,19 +17,34 @@ public class EmotionManager : MonoBehaviour
     private AccelerationHandler m_AccelerationHandler;
     private bool m_ReadCalibrationValues = true;
 
+    [HideInInspector]
     public bool calibrationPhase = true;
-    
-    private void Start()
+
+
+    private void OnEnable()
     {
-        m_AccelerationHandler = new AccelerationHandler(
-            accelerationReader.frequency * accelerationSecondsBufferSize, 
+        accelerationReader.onNewRead -= HandleNewAcceleration;
+        m_ReadCalibrationValues = true;
+        calibrationPhase = true;
+        m_AccelerationHandler = new AccelerationHandler(accelerationSecondsBufferSize, 
             accelerationReader.frequency, jerkThresholdMultiplier);
+        StartCalibration();
+        classifierApiManager.apiEnabled = true;
+    }
+
+    private void StartCalibration()
+    {
+        accelerationReader.onNewRead -= HandleNewAcceleration;
         accelerationReader.onNewRead += HandleNewAcceleration;
         StartCoroutine(Calibrate());
     }
 
     private IEnumerator Calibrate()
     {
+        if (accelerationReader.ds4Found)
+        {
+            yield break;
+        }
         var timeLeft = calibrationTime;
         while (timeLeft > 0)
         {
@@ -65,5 +80,10 @@ public class EmotionManager : MonoBehaviour
             m_AccelerationHandler.calibrationAccelerometerBuffer.Add(accelerationmagnitude);
         }
         m_AccelerationHandler.accelerationBuffer.Add(accelerationmagnitude);
+    }
+
+    private void OnDisable()
+    {
+        accelerationReader.onNewRead -= HandleNewAcceleration;
     }
 }

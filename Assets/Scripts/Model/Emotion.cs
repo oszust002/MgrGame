@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 public class Emotion
 {
-    private static readonly Regex emotionRegex = new Regex(@"v(.)a(.)");
+    private static readonly Regex emotionRegex = new Regex(@"v(.)_a(.)");
 
     public enum Level
     {

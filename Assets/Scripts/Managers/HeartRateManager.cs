@@ -24,9 +24,10 @@ public class HeartRateManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         m_HeartRateResponses = new RollingList<HeartRateResponse>(bufferSize);
+        antReader.onNewHeartBeat -= SaveHeartBeat;
         antReader.onNewHeartBeat += SaveHeartBeat;
     }
 
@@ -40,9 +41,8 @@ public class HeartRateManager : MonoBehaviour
         m_HeartRateResponses.Add(heartRateResponse);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-
+        antReader.onNewHeartBeat -= SaveHeartBeat;
     }
 }

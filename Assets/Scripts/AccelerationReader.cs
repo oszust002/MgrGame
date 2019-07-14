@@ -10,17 +10,30 @@ public class AccelerationReader : MonoBehaviour
     public int frequency = 20;
     
     private Rewired.Player Player => ReInput.players.GetPlayer(playerId);
-    KalmanFilter m_KalmanFilter = new KalmanFilter(0.21f, 0.01f,4);
+    private KalmanFilter m_KalmanFilter;
 
     public event OnNewRead onNewRead;
-    [HideInInspector]
-    public bool isWorking = false;
+    [HideInInspector] public bool isWorking;
+    [HideInInspector] public bool ds4Found;
 
-    private void Start()
+    private void OnEnable()
     {
+        var ds4 = GetFirstDs4(Player);
+        if (ds4 == null)
+        {
+            ds4Found = true;
+            return;
+        }
+        isWorking = false;
+        m_KalmanFilter =  new KalmanFilter(0.21f, 0.01f,4);
         InvokeRepeating(nameof(ReadData), 0.5f, 1.0f/frequency);
     }
-    
+
+    private void OnDisable()
+    {
+        CancelInvoke(nameof(ReadData));
+    }
+
     public delegate void OnNewRead(float accelerationMagnitude);
 
 
@@ -35,6 +48,7 @@ public class AccelerationReader : MonoBehaviour
         var ds4 = GetFirstDs4(Player);
         if (ds4 == null)
         {
+            ds4Found = false;
             isWorking = false;
             return;
         }

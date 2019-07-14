@@ -73,7 +73,8 @@ public class AntReader : MonoBehaviour
 #endif
     }
 
-    void Start()
+
+    private void OnEnable()
     {
         InitAnt();
     }
@@ -223,7 +224,7 @@ public class AntReader : MonoBehaviour
         return RolloverHandler.HandleRollover(currBeatTime, m_CurrentHeartBeatTimeRolloverHandler);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         _channel?.closeChannel();
         _device?.Dispose();

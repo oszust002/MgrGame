@@ -10,19 +10,19 @@ public class ClassifierApiManager : MonoBehaviour
     public float emotionAskTime = 5;
     private float m_Time = 0;
     private EmotionResponse m_LastEmotionResponse;
-    public bool enabled;
+    public bool apiEnabled;
     
     [HideInInspector]
     public bool isNewEmotionSinceLastGet = false;
 
-    private void Start()
+    private void OnEnable()
     {
         m_Time = emotionAskTime;
     }
 
     private void Update()
     {
-        if (!enabled)
+        if (!apiEnabled)
         {
             return;
         }
@@ -57,11 +57,20 @@ public class ClassifierApiManager : MonoBehaviour
             {
                 yield return null;
             }
-            var result = req.downloadHandler.data;
-            var json = System.Text.Encoding.Default.GetString(result);
-            var emotion = JsonUtility.FromJson<EmotionResponse>(json);
-            m_LastEmotionResponse = emotion;
-            isNewEmotionSinceLastGet = true;
+
+            if (!req.isHttpError && !req.isNetworkError && req.error == null)
+            {
+                var result = req.downloadHandler.data;
+                var json = System.Text.Encoding.Default.GetString(result);
+                var emotion = JsonUtility.FromJson<EmotionResponse>(json);
+                m_LastEmotionResponse = emotion;
+                isNewEmotionSinceLastGet = true;
+            }
         }
+    }
+
+    private void OnDisable()
+    {
+        apiEnabled = false;
     }
 }
