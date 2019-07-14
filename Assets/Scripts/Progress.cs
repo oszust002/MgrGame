@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -102,8 +103,10 @@ public class Progress : MonoBehaviour
                 LoadLevel(currentLevel + 1);
             }   
         }
-
-        CheckHardMode();
+        //If not in affective mode, 
+        if (!AffectiveManager.instance.AffectiveEnabled()) {
+            CheckHardMode();
+        }
         UpdateScoreUI();
     }
 
@@ -160,6 +163,17 @@ public class Progress : MonoBehaviour
             enemySpawner.spawnTime = levels[currentLevel].spawnRate;
             m_HardModeHandler.Disable();
         }
+
+        if (AffectiveManager.instance.AffectiveEnabled())
+        {
+            HandleEmotions();
+        }
+    }
+
+    private void HandleEmotions()
+    {
+        var emotion = AffectiveManager.instance.emotionManager.GetEmotion();
+        //TODO: Handle emotion to enable/disable hard mode
     }
 }
 

@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 public class AffectiveManager : MonoBehaviour
 {
     public GameObject emotionManagerObject;
-    private EmotionManager m_EmotionManager;
+    [HideInInspector]
+    public EmotionManager emotionManager;
     public static AffectiveManager instance;
 
     private void Start()
@@ -19,7 +20,7 @@ public class AffectiveManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this);
-        m_EmotionManager = emotionManagerObject.GetComponent<EmotionManager>();
+        emotionManager = emotionManagerObject.GetComponent<EmotionManager>();
         EnableAffectives();
     }
 
@@ -31,5 +32,10 @@ public class AffectiveManager : MonoBehaviour
     public void DisableAffectives()
     {
         emotionManagerObject.SetActive(false);
+    }
+
+    public bool AffectiveEnabled()
+    {
+        return emotionManagerObject.activeSelf;
     }
 }

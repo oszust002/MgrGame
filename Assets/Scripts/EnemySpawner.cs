@@ -38,5 +38,16 @@ public class EnemySpawner : MonoBehaviour
             }
             m_NextSpawnTime = Time.time + spawnTime;
         }
+
+        if (AffectiveManager.instance.AffectiveEnabled())
+        {
+            HandleEmotion();
+        }
+    }
+
+    private void HandleEmotion()
+    {
+        var emotion = AffectiveManager.instance.emotionManager.GetEmotion();
+        //TODO: Handle emotion (if bored or neutral spawn extra wave)
     }
 }

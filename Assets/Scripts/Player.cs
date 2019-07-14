@@ -15,6 +15,20 @@ public class Player : HealthEntity
         SetMaxHealth(health);
     }
 
+    private void Update()
+    {
+        if (AffectiveManager.instance.AffectiveEnabled())
+        {
+            HandleEmotion();
+        }
+    }
+
+    private void HandleEmotion()
+    {
+        var emotion = AffectiveManager.instance.emotionManager.GetEmotion();
+        //TODO: Handle emotion (if feared then heal or sth), maybe take shooter and special power if feared
+    }
+
     public void SetMaxHealth(int newMaxHealth, bool resetHealth = true)
     {
         maxHealth = newMaxHealth;
