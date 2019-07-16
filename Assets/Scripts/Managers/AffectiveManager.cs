@@ -21,7 +21,6 @@ public class AffectiveManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
         emotionManager = emotionManagerObject.GetComponent<EmotionManager>();
-        EnableAffectives();
     }
 
     public void EnableAffectives()

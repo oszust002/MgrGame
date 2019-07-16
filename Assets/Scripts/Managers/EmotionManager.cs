@@ -28,12 +28,11 @@ public class EmotionManager : MonoBehaviour
         calibrationPhase = true;
         m_AccelerationHandler = new AccelerationHandler(accelerationSecondsBufferSize, 
             accelerationReader.frequency, jerkThresholdMultiplier);
-        StartCalibration();
-        classifierApiManager.apiEnabled = true;
     }
 
-    private void StartCalibration()
+    public void StartCalibration()
     {
+        classifierApiManager.apiEnabled = true;
         accelerationReader.onNewRead -= HandleNewAcceleration;
         accelerationReader.onNewRead += HandleNewAcceleration;
         StartCoroutine(Calibrate());
