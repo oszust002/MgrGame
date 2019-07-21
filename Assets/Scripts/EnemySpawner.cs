@@ -17,6 +17,10 @@ public class EnemySpawner : MonoBehaviour
         {
             enemies = new List<GameObject>();
         }
+        if (AffectiveManager.instance.AffectiveEnabled())
+        {
+            AffectiveManager.instance.emotionManager.onNewEmotion += HandleEmotion;
+        }
     }
 
     // Update is called once per frame
@@ -38,16 +42,19 @@ public class EnemySpawner : MonoBehaviour
             }
             m_NextSpawnTime = Time.time + spawnTime;
         }
-
-        if (AffectiveManager.instance.AffectiveEnabled())
-        {
-            HandleEmotion();
-        }
     }
 
-    private void HandleEmotion()
+    private void OnDestroy()
     {
-        var emotion = AffectiveManager.instance.emotionManager.GetEmotion();
+        AffectiveManager.instance.emotionManager.onNewEmotion -= HandleEmotion;
+    }
+
+    private void HandleEmotion(Emotion emotion)
+    {
+        if (Progress.instance.IsLevelLoading || GameManager.instance.gameEnded || GameManager.instance.gamePaused)
+        {
+            return;
+        }
         //TODO: Handle emotion (if bored or neutral spawn extra wave)
     }
 }

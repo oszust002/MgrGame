@@ -45,6 +45,10 @@ public class Progress : MonoBehaviour
         m_Score = 0;
         LoadLevel(0);
         UpdateScoreUI();
+        if (AffectiveManager.instance.AffectiveEnabled())
+        {
+            AffectiveManager.instance.emotionManager.onNewEmotion += HandleEmotions;
+        }
     }
 
     private void LoadLevel(int number)
@@ -163,17 +167,16 @@ public class Progress : MonoBehaviour
             enemySpawner.spawnTime = levels[currentLevel].spawnRate;
             m_HardModeHandler.Disable();
         }
-
-        if (AffectiveManager.instance.AffectiveEnabled())
-        {
-            HandleEmotions();
-        }
     }
 
-    private void HandleEmotions()
+    private void HandleEmotions(Emotion emotion)
     {
-        var emotion = AffectiveManager.instance.emotionManager.GetEmotion();
         //TODO: Handle emotion to enable/disable hard mode
+    }
+
+    private void OnDestroy()
+    {
+        AffectiveManager.instance.emotionManager.onNewEmotion -= HandleEmotions;
     }
 }
 

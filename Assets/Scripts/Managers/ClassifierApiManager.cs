@@ -7,35 +7,14 @@ public class ClassifierApiManager : MonoBehaviour
 {
     private static string URI = "http://localhost:5000/classify";
     public HeartRateManager heartRateManager;
-    public float emotionAskTime = 5;
-    private float m_Time = 0;
     private EmotionResponse m_LastEmotionResponse;
     public bool apiEnabled;
     
     [HideInInspector]
     public bool isNewEmotionSinceLastGet = false;
 
-    private void OnEnable()
-    {
-        m_Time = emotionAskTime;
-    }
-
-    private void Update()
-    {
-        if (!apiEnabled)
-        {
-            return;
-        }
-        if (m_Time >= 0)
-        {
-            m_Time -= Time.deltaTime;
-        }
-        else if (heartRateManager.IsReady)
-        {
-            m_Time = emotionAskTime;
-            StartCoroutine(AskForEmotion());
-        }
-    }
+    [HideInInspector]
+    public bool requestInProgress = false;
 
     public EmotionResponse GetLastEmotion()
     {
@@ -43,8 +22,13 @@ public class ClassifierApiManager : MonoBehaviour
         return m_LastEmotionResponse;
     }
 
-    private IEnumerator AskForEmotion()
+    public IEnumerator AskForEmotion()
     {
+        if (!apiEnabled)
+        {
+            yield break;
+        }
+        requestInProgress = true;
         var rrArray = heartRateManager.RrArray.Select(rr => rr/1000).ToArray();
         var hrArray = heartRateManager.HrArray;
         var requestBody = new RequestBody {hr = hrArray, rr = rrArray};
@@ -66,6 +50,8 @@ public class ClassifierApiManager : MonoBehaviour
                 m_LastEmotionResponse = emotion;
                 isNewEmotionSinceLastGet = true;
             }
+
+            requestInProgress = false;
         }
     }
 

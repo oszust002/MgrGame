@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emotionManagerObject: {fileID: 168363636766444489}
+  emotionManager: {fileID: 0}
 --- !u!1 &168363636766444489
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,8 +97,9 @@ MonoBehaviour:
   accelerationReader: {fileID: 168363636766444491}
   calibrationTime: 20
   accelerationSecondsBufferSize: 4
-  jerkThresholdMultiplier: 0
+  jerkThresholdMultiplier: 4
   calibrationPhase: 1
+  emotionAskTime: 5
 --- !u!114 &168363636766444494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,9 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartRateManager: {fileID: 168363636766444493}
-  emotionAskTime: 5
   apiEnabled: 0
   isNewEmotionSinceLastGet: 0
+  requestInProgress: 0
 --- !u!114 &168363636766444493
 MonoBehaviour:
   m_ObjectHideFlags: 0

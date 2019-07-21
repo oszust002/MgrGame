@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class EmotionManager : MonoBehaviour
     public float calibrationTime = 20;
     public int accelerationSecondsBufferSize = 4;
     [Range(1,10)]
-    public float jerkThresholdMultiplier;
+    public float jerkThresholdMultiplier = 4;
 
     private AccelerationHandler m_AccelerationHandler;
     private bool m_ReadCalibrationValues = true;
@@ -20,14 +21,54 @@ public class EmotionManager : MonoBehaviour
     [HideInInspector]
     public bool calibrationPhase = true;
 
+    public float emotionAskTime = 5f;
+    private float time = 0;
 
+    public event OnNewEmotion onNewEmotion;
+
+    public delegate void OnNewEmotion(Emotion emotion);
     private void OnEnable()
     {
+        time = emotionAskTime;
         accelerationReader.onNewRead -= HandleNewAcceleration;
         m_ReadCalibrationValues = true;
         calibrationPhase = true;
         m_AccelerationHandler = new AccelerationHandler(accelerationSecondsBufferSize, 
             accelerationReader.frequency, jerkThresholdMultiplier);
+    }
+
+    private void Update()
+    {
+        if (calibrationPhase)
+        {
+            return;
+        }
+
+        if (time > 0)
+        {
+            time -= Time.deltaTime;
+        }
+        else
+        {
+            time = emotionAskTime;
+            StartCoroutine(AskForEmotion());
+        }
+        
+    }
+
+    private IEnumerator AskForEmotion()
+    {
+        if (classifierApiManager.heartRateManager.IsReady)
+        {
+            StartCoroutine(classifierApiManager.AskForEmotion());
+            while (classifierApiManager.requestInProgress)
+            {
+                yield return null;
+            }
+        }
+
+        var emotion = GetEmotion();
+        onNewEmotion?.Invoke(emotion);
     }
 
     public void StartCalibration()
@@ -61,7 +102,7 @@ public class EmotionManager : MonoBehaviour
         calibrationPhase = false;
     }
 
-    public Emotion GetEmotion()
+    private Emotion GetEmotion()
     {
         var emotion = new Emotion(classifierApiManager.GetLastEmotion());
         if (calibrationPhase)
