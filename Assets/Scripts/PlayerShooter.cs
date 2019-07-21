@@ -80,4 +80,9 @@ public class PlayerShooter : MonoBehaviour
             }    
         }
     }
+
+    public void ResetSpecial()
+    {
+        specialPowerImage.fillAmount = 1;
+    }
 }

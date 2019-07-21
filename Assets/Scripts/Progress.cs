@@ -171,7 +171,23 @@ public class Progress : MonoBehaviour
 
     private void HandleEmotions(Emotion emotion)
     {
-        //TODO: Handle emotion to enable/disable hard mode
+        if (emotion == null)
+        {
+            return;
+        }
+
+        if (emotion.Equals(Emotion.Neutral) || emotion.Equals(Emotion.Relaxed))
+        {
+            m_HardModeHandler.Enable();
+            m_HardModeStartTime = Time.time;
+            enemySpawner.enemies = levels[currentLevel].specialEnemies;
+            enemySpawner.spawnTime = levels[currentLevel].spawnRate / 2;
+        } else if (emotion.Equals(Emotion.Angry))
+        {
+            enemySpawner.enemies = levels[currentLevel].enemies;
+            enemySpawner.spawnTime = levels[currentLevel].spawnRate;
+            m_HardModeHandler.Disable();
+        }
     }
 
     private void OnDestroy()

@@ -68,7 +68,10 @@ public class EmotionManager : MonoBehaviour
         }
 
         var emotion = GetEmotion();
-        onNewEmotion?.Invoke(emotion);
+        if (emotion != null)
+        {
+            onNewEmotion?.Invoke(emotion);
+        }
     }
 
     public void StartCalibration()

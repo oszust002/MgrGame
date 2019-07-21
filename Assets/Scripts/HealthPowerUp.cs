@@ -9,11 +9,7 @@
             var component = other.GetComponent<Player>();
             if (component != null)
             {
-                component.health += health;
-                if (component.health > component.maxHealth)
-                {
-                    component.health = component.maxHealth;
-                }
+                component.Heal(health);
             }
         }
     }
