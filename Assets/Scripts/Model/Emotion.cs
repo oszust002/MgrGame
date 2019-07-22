@@ -2,7 +2,18 @@ using System.Text.RegularExpressions;
 
 public class Emotion
 {
+    public static readonly Emotion Neutral = new Emotion(Level.MEDIUM, Level.MEDIUM);
+    public static readonly Emotion Sad = new Emotion(Level.LOW, Level.LOW);
+    public static readonly Emotion Angry = new Emotion(Level.LOW, Level.MEDIUM);
+    public static readonly Emotion Scared = new Emotion(Level.LOW, Level.HIGH);
+    public static readonly Emotion Tired = new Emotion(Level.MEDIUM, Level.LOW);
+    public static readonly Emotion Surprised = new Emotion(Level.MEDIUM, Level.HIGH);
+    public static readonly Emotion Relaxed = new Emotion(Level.HIGH, Level.LOW);
+    public static readonly Emotion Happy = new Emotion(Level.HIGH, Level.MEDIUM);
+    public static readonly Emotion Excited = new Emotion(Level.HIGH, Level.HIGH);
+    
     private static readonly Regex emotionRegex = new Regex(@"v(.)_a(.)");
+
 
     public enum Level
     {
@@ -11,6 +22,7 @@ public class Emotion
 
     public Level valence;
     public Level arousal;
+
 
     private Emotion(Level valence, Level arousal)
     {
@@ -96,15 +108,8 @@ public class Emotion
         }
     }
 
-    public static readonly Emotion Neutral = new Emotion(Level.MEDIUM, Level.MEDIUM);
-    public static readonly Emotion Sad = new Emotion(Level.LOW, Level.LOW);
-    public static readonly Emotion Angry = new Emotion(Level.LOW, Level.MEDIUM);
-    public static readonly Emotion Scared = new Emotion(Level.LOW, Level.HIGH);
-    public static readonly Emotion Tired = new Emotion(Level.MEDIUM, Level.LOW);
-    public static readonly Emotion Surprised = new Emotion(Level.MEDIUM, Level.HIGH);
-    public static readonly Emotion Relaxed = new Emotion(Level.HIGH, Level.LOW);
-    public static readonly Emotion Happy = new Emotion(Level.HIGH, Level.MEDIUM);
-    public static readonly Emotion Excited = new Emotion(Level.HIGH, Level.HIGH);
-    
-
+    public override string ToString()
+    {
+        return "Valence: " + valence + ", Arousal: " + arousal;
+    }
 }

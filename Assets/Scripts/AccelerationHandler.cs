@@ -39,6 +39,11 @@ public class AccelerationHandler
 
     public State GetCurrentState()
     {
+        
+        if (accelerationBuffer == null || accelerationBuffer.Count == 0)
+        {
+            return State.CALM;
+        }
         var jerk = CalculateJerk(accelerationBuffer.ToArray());
         var jerkAbsMean = jerk.Select(Math.Abs).Average();
         var currentState = jerkAbsMean > m_MultiplyThreshold * m_CalmJerkAbsMean ? State.EXCITED : State.CALM;

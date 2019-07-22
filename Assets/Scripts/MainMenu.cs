@@ -65,7 +65,7 @@ public class MainMenu : MonoBehaviour
             AffectiveManager.instance.emotionManager.StartCalibration();
             var timePassed = 0f;
             waitingText.gameObject.SetActive(true);
-            while (timePassed < calibrationTime)
+            while (timePassed < calibrationTime || AffectiveManager.instance.emotionManager.calibrationPhase)
             {
                 yield return new WaitForSeconds(0.5f);
                 timePassed += 0.5f;

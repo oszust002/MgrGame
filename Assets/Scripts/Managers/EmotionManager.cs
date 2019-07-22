@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -23,10 +22,11 @@ public class EmotionManager : MonoBehaviour
 
     public float emotionAskTime = 5f;
     private float time = 0;
+    private Emotion previousEmotion;
 
     public event OnNewEmotion onNewEmotion;
 
-    public delegate void OnNewEmotion(Emotion emotion);
+    public delegate void OnNewEmotion(Emotion previousEmotion, Emotion emotion);
     private void OnEnable()
     {
         time = emotionAskTime;
@@ -70,8 +70,9 @@ public class EmotionManager : MonoBehaviour
         var emotion = GetEmotion();
         if (emotion != null)
         {
-            onNewEmotion?.Invoke(emotion);
+            onNewEmotion?.Invoke(previousEmotion, emotion);
         }
+        previousEmotion = emotion;
     }
 
     public void StartCalibration()
@@ -84,8 +85,10 @@ public class EmotionManager : MonoBehaviour
 
     private IEnumerator Calibrate()
     {
-        if (accelerationReader.ds4Found)
+        if (!accelerationReader.ds4Found)
         {
+            m_ReadCalibrationValues = false;
+            calibrationPhase = false;
             yield break;
         }
         var timeLeft = calibrationTime;
@@ -100,7 +103,6 @@ public class EmotionManager : MonoBehaviour
         }
 
         m_ReadCalibrationValues = false;
-
         m_AccelerationHandler.CalculateCalibrationValues();
         calibrationPhase = false;
     }

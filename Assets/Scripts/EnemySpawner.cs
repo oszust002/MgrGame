@@ -33,14 +33,19 @@ public class EnemySpawner : MonoBehaviour
         
         if (Time.time > m_NextSpawnTime)
         {
-            foreach (var enemy in enemies)
-            {
-                var spawnPosition = PlayerController.Position;
-                //player position +- random x/y such as x^2+y^2=radius^2
-                spawnPosition += Random.insideUnitCircle.normalized * spawnRadius;
-                Instantiate(enemy, spawnPosition, Quaternion.identity);
-            }
+            SpawnWave();
             m_NextSpawnTime = Time.time + spawnTime;
+        }
+    }
+
+    private void SpawnWave()
+    {
+        foreach (var enemy in enemies)
+        {
+            var spawnPosition = PlayerController.Position;
+            //player position +- random x/y such as x^2+y^2=radius^2
+            spawnPosition += Random.insideUnitCircle.normalized * spawnRadius;
+            Instantiate(enemy, spawnPosition, Quaternion.identity);
         }
     }
 
@@ -49,12 +54,17 @@ public class EnemySpawner : MonoBehaviour
         AffectiveManager.instance.emotionManager.onNewEmotion -= HandleEmotion;
     }
 
-    private void HandleEmotion(Emotion emotion)
+    private void HandleEmotion(Emotion previousEmotion, Emotion emotion)
     {
+        Debug.Log(emotion);
         if (Progress.instance.IsLevelLoading || GameManager.instance.gameEnded || GameManager.instance.gamePaused)
         {
             return;
         }
         //TODO: Handle emotion (if bored or neutral spawn extra wave)
+        if (emotion.Equals(Emotion.Happy) || emotion.Equals(Emotion.Neutral) || emotion.Equals(Emotion.Relaxed))
+        {
+            SpawnWave();
+        }
     }
 }

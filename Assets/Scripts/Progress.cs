@@ -169,13 +169,8 @@ public class Progress : MonoBehaviour
         }
     }
 
-    private void HandleEmotions(Emotion emotion)
+    private void HandleEmotions(Emotion previousEmotion, Emotion emotion)
     {
-        if (emotion == null)
-        {
-            return;
-        }
-
         if (emotion.Equals(Emotion.Neutral) || emotion.Equals(Emotion.Relaxed))
         {
             m_HardModeHandler.Enable();

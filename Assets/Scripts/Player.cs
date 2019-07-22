@@ -21,7 +21,7 @@ public class Player : HealthEntity
         playerShooter = GetComponent<PlayerShooter>();
     }
 
-    private void HandleEmotion(Emotion emotion)
+    private void HandleEmotion(Emotion previousEmotion, Emotion emotion)
     {
         //TODO: Handle emotion (if feared then heal or sth), maybe take shooter and special power if feared
         if (Emotion.Scared.Equals(emotion) || Emotion.Sad.Equals(emotion))
@@ -30,11 +30,17 @@ public class Player : HealthEntity
         }
         else if (Emotion.Angry.Equals(emotion))
         {
-            if (playerShooter != null) playerShooter.ResetSpecial();
+            if (Emotion.Angry.Equals(previousEmotion))
+            {
+                if (playerShooter != null) playerShooter.ResetSpecial();
+            }
         }
-        else if (Emotion.Happy.Equals(emotion))
+        else if (Emotion.Happy.Equals(emotion) || Emotion.Excited.Equals(emotion))
         {
-            TakeDamage((int) (0.2*health));
+            if (Emotion.Happy.Equals(previousEmotion) || Emotion.Excited.Equals(previousEmotion))
+            {
+                TakeDamage((int) (0.2*health));
+            }
         }
     }
 

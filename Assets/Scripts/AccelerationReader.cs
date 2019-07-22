@@ -21,9 +21,11 @@ public class AccelerationReader : MonoBehaviour
         var ds4 = GetFirstDs4(Player);
         if (ds4 == null)
         {
-            ds4Found = true;
+            ds4Found = false;
             return;
         }
+
+        ds4Found = true;
         isWorking = false;
         m_KalmanFilter =  new KalmanFilter(0.21f, 0.01f,4);
         InvokeRepeating(nameof(ReadData), 0.5f, 1.0f/frequency);
