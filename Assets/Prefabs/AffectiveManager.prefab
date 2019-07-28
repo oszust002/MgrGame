@@ -96,8 +96,7 @@ MonoBehaviour:
   classifierApiManager: {fileID: 168363636766444494}
   accelerationReader: {fileID: 168363636766444491}
   calibrationTime: 20
-  accelerationSecondsBufferSize: 4
-  jerkThresholdMultiplier: 4
+  jerkThresholdMultiplier: 6
   calibrationPhase: 1
   emotionAskTime: 5
 --- !u!114 &168363636766444494

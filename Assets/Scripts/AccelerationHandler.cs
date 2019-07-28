@@ -39,7 +39,7 @@ public class AccelerationHandler
 
     public State GetCurrentState()
     {
-        
+        var time = Time.time;
         if (accelerationBuffer == null || accelerationBuffer.Count == 0)
         {
             return State.CALM;
@@ -47,18 +47,18 @@ public class AccelerationHandler
         var jerk = CalculateJerk(accelerationBuffer.ToArray());
         var jerkAbsMean = jerk.Select(Math.Abs).Average();
         var currentState = jerkAbsMean > m_MultiplyThreshold * m_CalmJerkAbsMean ? State.EXCITED : State.CALM;
-        if (currentState == State.CALM && WasCalmBefore() && IsCalmForLongTime())
+        if (currentState == State.CALM && WasCalmBefore() && IsCalmForLongTime(time))
         {
             currentState = State.VERY_CALM;
         }
-        UpdateLastCalmTime(currentState);
+        UpdateLastCalmTime(currentState, time);
 
         m_LastState = currentState;
-        m_LastRead = Time.time;
+        m_LastRead = time;
         return currentState;
     }
 
-    private void UpdateLastCalmTime(State currentState)
+    private void UpdateLastCalmTime(State currentState, float time)
     {
         if (currentState == State.EXCITED)
         {
@@ -66,19 +66,19 @@ public class AccelerationHandler
         }
         else if (m_LastCalmTime < 0)
         {
-            m_LastCalmTime = Time.time;
+            m_LastCalmTime = time;
         }
-        else if (!WasCalmBefore() || Time.time - m_LastRead > m_SecondsBufferSize)
+        else if (!WasCalmBefore() || time - m_LastRead > m_SecondsBufferSize)
         {
-            m_LastCalmTime = Time.time;
+            m_LastCalmTime = time;
         }
     }
 
-    private bool IsCalmForLongTime()
+    private bool IsCalmForLongTime(float time)
     {
         if (m_LastCalmTime < 0) return false;
-        if (Time.time - m_LastRead > m_SecondsBufferSize) return false;
-        return Time.time - m_LastCalmTime > m_VeryCalmTimeThreshold;
+        if (time - m_LastRead > m_SecondsBufferSize) return false;
+        return time - m_LastCalmTime > m_VeryCalmTimeThreshold;
     }
 
     private bool WasCalmBefore()

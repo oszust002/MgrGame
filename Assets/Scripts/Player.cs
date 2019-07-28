@@ -32,7 +32,7 @@ public class Player : HealthEntity
         {
             if (Emotion.Angry.Equals(previousEmotion))
             {
-                if (playerShooter != null) playerShooter.ResetSpecial();
+                if (playerShooter != null) playerShooter.ExecuteSpecial();
             }
         }
         else if (Emotion.Happy.Equals(emotion) || Emotion.Excited.Equals(emotion))

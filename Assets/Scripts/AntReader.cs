@@ -153,7 +153,7 @@ public class AntReader : MonoBehaviour
             case ANT_ReferenceLibrary.ANTMessageID.RESPONSE_EVENT_0x40:
             {
                 //TODO: Handle many EVENT_RX_FAIL (close channel, throw exception?) 
-                Debug.Log(response.getChannelEventCode());
+//                Debug.Log(response.getChannelEventCode());
                 break;
             }
             case ANT_ReferenceLibrary.ANTMessageID.BROADCAST_DATA_0x4E:
@@ -195,12 +195,11 @@ public class AntReader : MonoBehaviour
         var heartRateResponse = response.Build();
         if (m_HeartBeatCount < heartRateResponse.HeartRateBeatCount)
         {
+//            Debug.Log(heartRateResponse);
             onNewHeartBeat?.Invoke(heartRateResponse);
         }
-        
         m_LastHeartBeatEventTime = response.lastHeartRateBeatTime;
         m_HeartBeatCount = response.heartRateBeatCount;
-        Debug.Log(heartRateResponse);
     }
 
     private void AddRrParameters(HeartRateResponse.Builder response)
@@ -209,7 +208,7 @@ public class AntReader : MonoBehaviour
         if (m_HeartBeatCount < response.heartRateBeatCount && m_LastHeartBeatEventTime > 0)
         {
             var rr = response.lastHeartRateBeatTime - m_LastHeartBeatEventTime;
-            rr = rr * 1000 / 1024;
+            rr = (rr * 1000 / 1024)/(response.heartRateBeatCount - m_HeartBeatCount);
 
             m_LastRr = rr;
         }
@@ -227,6 +226,10 @@ public class AntReader : MonoBehaviour
     private void OnDisable()
     {
         _channel?.closeChannel();
+    }
+
+    private void OnDestroy()
+    {
         _device?.Dispose();
     }
 

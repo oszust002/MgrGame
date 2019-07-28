@@ -173,12 +173,19 @@ public class Progress : MonoBehaviour
     {
         if (emotion.Equals(Emotion.Neutral) || emotion.Equals(Emotion.Relaxed))
         {
+            if (m_HardModeHandler.hardModeEnabled) return;
             m_HardModeHandler.Enable();
             m_HardModeStartTime = Time.time;
             enemySpawner.enemies = levels[currentLevel].specialEnemies;
             enemySpawner.spawnTime = levels[currentLevel].spawnRate / 2;
         } else if (emotion.Equals(Emotion.Angry))
         {
+            enemySpawner.enemies = levels[currentLevel].enemies;
+            enemySpawner.spawnTime = levels[currentLevel].spawnRate;
+            m_HardModeHandler.Disable();
+        } else if (Emotion.Scared.Equals(emotion))
+        {
+            if (!Emotion.Scared.Equals(previousEmotion)) return;
             enemySpawner.enemies = levels[currentLevel].enemies;
             enemySpawner.spawnTime = levels[currentLevel].spawnRate;
             m_HardModeHandler.Disable();

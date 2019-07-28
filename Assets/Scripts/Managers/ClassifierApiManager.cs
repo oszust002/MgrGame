@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class ClassifierApiManager : MonoBehaviour
 {
-    private static string URI = "http://localhost:5000/classify";
+    private static string URI = "http://127.0.0.1:5000/classify";
     public HeartRateManager heartRateManager;
     private EmotionResponse m_LastEmotionResponse;
     public bool apiEnabled;

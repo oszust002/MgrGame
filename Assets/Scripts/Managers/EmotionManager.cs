@@ -10,8 +10,7 @@ public class EmotionManager : MonoBehaviour
     [Header("Parameters")]
     [Min(10)]
     public float calibrationTime = 20;
-    public int accelerationSecondsBufferSize = 4;
-    [Range(1,10)]
+    [Range(1,20)]
     public float jerkThresholdMultiplier = 4;
 
     private AccelerationHandler m_AccelerationHandler;
@@ -33,7 +32,7 @@ public class EmotionManager : MonoBehaviour
         accelerationReader.onNewRead -= HandleNewAcceleration;
         m_ReadCalibrationValues = true;
         calibrationPhase = true;
-        m_AccelerationHandler = new AccelerationHandler(accelerationSecondsBufferSize, 
+        m_AccelerationHandler = new AccelerationHandler((int) emotionAskTime + 3, 
             accelerationReader.frequency, jerkThresholdMultiplier);
     }
 

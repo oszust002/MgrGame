@@ -63,31 +63,55 @@ public class Emotion
 
     public void Tune(AccelerationHandler.State state)
     {
-        if (state != AccelerationHandler.State.EXCITED) return;
         Level newArousal = arousal;
-        switch (arousal)
+        if (state == AccelerationHandler.State.EXCITED)
         {
-            case Level.LOW:
+            switch (arousal)
             {
-                newArousal = Level.MEDIUM;
-                break;
-            }
-            case Level.MEDIUM:
-            {
-                newArousal = Level.HIGH;
-                break;
-            }
-            case Level.HIGH:
-            {
-                newArousal = Level.HIGH;
-                break;
+                case Level.LOW:
+                {
+                    newArousal = Level.MEDIUM;
+                    break;
+                }
+                case Level.MEDIUM:
+                {
+                    newArousal = Level.HIGH;
+                    break;
+                }
+                case Level.HIGH:
+                {
+                    newArousal = Level.HIGH;
+                    break;
+                }
             }
         }
+        else if (state == AccelerationHandler.State.VERY_CALM)
+        {
+            switch (arousal)
+            {
+                case Level.LOW:
+                {
+                    newArousal = Level.LOW;
+                    break;
+                }
+                case Level.MEDIUM:
+                {
+                    newArousal = Level.LOW;
+                    break;
+                }
+                case Level.HIGH:
+                {
+                    newArousal = Level.MEDIUM;
+                    break;
+                }
+            }
+        }
+
         arousal = newArousal;
 
     }
 
-    protected bool Equals(Emotion other)
+    private bool Equals(Emotion other)
     {
         return valence == other.valence && arousal == other.arousal;
     }
@@ -96,7 +120,7 @@ public class Emotion
     {
         if (ReferenceEquals(null, obj)) return false;
         if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
+        if (obj.GetType() != GetType()) return false;
         return Equals((Emotion) obj);
     }
 

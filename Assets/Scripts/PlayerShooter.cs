@@ -75,7 +75,7 @@ public class PlayerShooter : MonoBehaviour
         {
             if (specialPowerImage.fillAmount >= 1)
             {
-                Instantiate(specialPowerPrefab, transform.position, transform.rotation);
+                ExecuteSpecial();
                 specialPowerImage.fillAmount = 0;
             }    
         }
@@ -84,5 +84,10 @@ public class PlayerShooter : MonoBehaviour
     public void ResetSpecial()
     {
         specialPowerImage.fillAmount = 1;
+    }
+
+    public void ExecuteSpecial()
+    {
+        Instantiate(specialPowerPrefab, transform.position, transform.rotation);
     }
 }
