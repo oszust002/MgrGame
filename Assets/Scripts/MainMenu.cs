@@ -48,7 +48,7 @@ public class MainMenu : MonoBehaviour
             AffectiveManager.instance.EnableAffectives();
             
             //Introduction phase
-            var calibrationTime = AffectiveManager.instance.emotionManager.calibrationTime;
+            var calibrationTime = AffectiveManager.instance.GetCalibrationTime();
             affectiveIntroductionText.text = affectiveIntroductionText.text.Replace("{}", calibrationTime.ToString());
             affectiveIntroductionAnimator.SetTrigger("Introduction");
             yield return new WaitForSeconds(10);
@@ -62,7 +62,7 @@ public class MainMenu : MonoBehaviour
             
             //Calibration phase
             affectiveIntroduction.SetActive(false);
-            AffectiveManager.instance.emotionManager.StartCalibration();
+            AffectiveManager.instance.StartCalibration();
             var timePassed = 0f;
             waitingText.gameObject.SetActive(true);
             while (timePassed < calibrationTime || AffectiveManager.instance.emotionManager.calibrationPhase)

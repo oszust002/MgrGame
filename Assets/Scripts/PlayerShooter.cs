@@ -28,6 +28,15 @@ public class PlayerShooter : MonoBehaviour
     void Start()
     {
         UpdateWeaponAttributes();
+        if (AffectiveManager.instance.AffectiveEnabled())
+        {
+            AffectiveManager.instance.sensorController.onThresholdPassed += OnSqueeze;
+        }
+    }
+
+    private void OnSqueeze(float value)
+    {
+        ExecuteSpecialIfPossible();
     }
 
     private void UpdateWeaponAttributes()
@@ -73,11 +82,16 @@ public class PlayerShooter : MonoBehaviour
         //if fire or clashing fist, apply special power
         if (Input.GetButton("Fire2"))
         {
-            if (specialPowerImage.fillAmount >= 1)
-            {
-                ExecuteSpecial();
-                specialPowerImage.fillAmount = 0;
-            }    
+            ExecuteSpecialIfPossible();
+        }
+    }
+
+    private void ExecuteSpecialIfPossible()
+    {
+        if (specialPowerImage.fillAmount >= 1)
+        {
+            ExecuteSpecial();
+            specialPowerImage.fillAmount = 0;
         }
     }
 
@@ -89,5 +103,10 @@ public class PlayerShooter : MonoBehaviour
     public void ExecuteSpecial()
     {
         Instantiate(specialPowerPrefab, transform.position, transform.rotation);
+    }
+
+    private void OnDestroy()
+    {
+        AffectiveManager.instance.sensorController.onThresholdPassed -= OnSqueeze;
     }
 }
