@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.Networking;
 
 public class ClassifierApiManager : MonoBehaviour
 {
-    private static string URI = "http://127.0.0.1:5000/classify";
+    private static string URI = "http://127.0.0.1:5000";
     public HeartRateManager heartRateManager;
     private EmotionResponse m_LastEmotionResponse;
     public bool apiEnabled;
@@ -22,6 +23,16 @@ public class ClassifierApiManager : MonoBehaviour
         return m_LastEmotionResponse;
     }
 
+    private void Start()
+    {
+        string[] args = Environment.GetCommandLineArgs();
+        int portArgIndex = Array.FindIndex(args, x => x == "--classifier-url" || x == "-clu");
+        if (portArgIndex != -1 && args.Length > portArgIndex)
+        {
+            URI = args[portArgIndex + 1];
+        }
+    }
+
     public IEnumerator AskForEmotion()
     {
         if (!apiEnabled)
@@ -33,7 +44,8 @@ public class ClassifierApiManager : MonoBehaviour
         var hrArray = heartRateManager.HrArray;
         var requestBody = new RequestBody {hr = hrArray, rr = rrArray};
         
-        using (UnityWebRequest req = UnityWebRequest.Put(URI,JsonUtility.ToJson(requestBody)))
+        var uri = URI + (URI.EndsWith("/") ? "classify" : "/classify");
+        using (UnityWebRequest req = UnityWebRequest.Put(uri,JsonUtility.ToJson(requestBody)))
         {
             req.SetRequestHeader("Content-Type", "application/json");
             yield return req.SendWebRequest();

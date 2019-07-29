@@ -41,7 +41,7 @@ public class SensorController : MonoBehaviour
     {
         string[] args = Environment.GetCommandLineArgs();
         int portArgIndex = Array.FindIndex(args, x => x == "--bitalino-port" || x == "-bp");
-        if (portArgIndex != -1)
+        if (portArgIndex != -1 && args.Length > portArgIndex)
         {
             reader.manager.scriptSerialPort.portName = args[portArgIndex + 1];
         }
