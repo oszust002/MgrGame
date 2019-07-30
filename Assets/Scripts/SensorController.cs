@@ -93,7 +93,7 @@ public class SensorController : MonoBehaviour
 
     private float GetAverageEmg(BITalinoFrame[] buffer)
     {
-        return buffer.Select(x => Mathf.Abs((float) x.GetAnalogValue(1))).Average();
+        return buffer.Select(x => Mathf.Abs((float) x.GetAnalogValue(0))).Average();
     }
 
     private void OnDisable()
