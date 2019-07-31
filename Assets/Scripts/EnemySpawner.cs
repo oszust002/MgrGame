@@ -62,7 +62,10 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
         //TODO: Handle emotion (if bored or neutral spawn extra wave)
-        if (emotion.Equals(Emotion.Happy) || emotion.Equals(Emotion.Neutral) || emotion.Equals(Emotion.Relaxed))
+        if (emotion.Equals(Emotion.Happy) || 
+            emotion.Equals(Emotion.Neutral) || 
+            emotion.Equals(Emotion.Relaxed) ||
+            emotion.Equals(Emotion.Tired))
         {
             SpawnWave();
         }

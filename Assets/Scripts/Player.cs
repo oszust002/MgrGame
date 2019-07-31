@@ -42,6 +42,13 @@ public class Player : HealthEntity
                 TakeDamage((int) (0.2*health));
             }
         }
+        else if (Emotion.Neutral.Equals(emotion) || Emotion.Tired.Equals(emotion) || Emotion.Relaxed.Equals(emotion))
+        {
+            if (Emotion.Neutral.Equals(previousEmotion) || Emotion.Tired.Equals(previousEmotion) || Emotion.Relaxed.Equals(previousEmotion))
+            {
+                TakeDamage((int) (0.4*health));
+            }
+        }
     }
 
     public void SetMaxHealth(int newMaxHealth, bool resetHealth = true)

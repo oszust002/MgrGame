@@ -171,7 +171,7 @@ public class Progress : MonoBehaviour
 
     private void HandleEmotions(Emotion previousEmotion, Emotion emotion)
     {
-        if (emotion.Equals(Emotion.Neutral) || emotion.Equals(Emotion.Relaxed))
+        if (Emotion.Neutral.Equals(emotion) || Emotion.Relaxed.Equals(emotion) || Emotion.Tired.Equals(emotion))
         {
             if (m_HardModeHandler.hardModeEnabled) return;
             m_HardModeHandler.Enable();
