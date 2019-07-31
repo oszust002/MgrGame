@@ -16,6 +16,9 @@ public class SensorController : MonoBehaviour
     public float calibrationTime = 30f;
     public float calibrationWaitTime = 3f;
     public float thresholdMultiplier = 1.1f;
+    [Range(0,1)]
+    public float minimumThresholdPassDuration = 0.3f;
+    private float thresholdPassedTime = -1;
 
     [Header("Debug purposes")]
     public float meanEmg;
@@ -53,6 +56,7 @@ public class SensorController : MonoBehaviour
         calmEmg = 0;
         meanEmg = 0;
         reader.enabled = true;
+        thresholdPassedTime = -1;
     }
 
     // Update is called once per frame
@@ -65,7 +69,18 @@ public class SensorController : MonoBehaviour
             meanEmg = GetAverageEmg(buffer);
             if (meanEmg > thresholdMultiplier * calmEmg)
             {
-                onThresholdPassed?.Invoke(meanEmg);
+                if (thresholdPassedTime < 0)
+                {
+                    thresholdPassedTime = Time.time;
+                }
+                else if (Time.time - thresholdPassedTime > minimumThresholdPassDuration)
+                {
+                    onThresholdPassed?.Invoke(meanEmg);
+                }
+            }
+            else
+            {
+                thresholdPassedTime = -1;
             }
         }
     }
