@@ -146,7 +146,7 @@ public class BitalinoReader : MonoBehaviour {
             switch(channels)
             {
 				case BitalinoManager.Channels.EMG :
-                    frame.SetAnalogValue(i, SensorDataConvertor.ScaleECG_mV(frame.GetAnalogValue(i), i));
+                    frame.SetAnalogValue(i, SensorDataConvertor.ScaleEMG_mV(frame.GetAnalogValue(i), i));
                     break;
 				case BitalinoManager.Channels.EDA:
                     frame.SetAnalogValue(i, SensorDataConvertor.ScaleEDA(frame.GetAnalogValue(i), i));
