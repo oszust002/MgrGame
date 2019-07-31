@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
         //Check if there is joystick connected
         var joystickNames = Input.GetJoystickNames();
-        isJoystickControl = joystickNames.Length > 0 && joystickNames[0].Length > 0;
+        isJoystickControl = joystickNames.Length > 0 && joystickNames.Any(s => s.Length > 0);
         Position = transform.position;
     }
 

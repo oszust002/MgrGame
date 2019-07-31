@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -44,6 +45,10 @@ public class Progress : MonoBehaviour
         m_Score = 0;
         LoadLevel(0);
         UpdateScoreUI();
+        if (AffectiveManager.instance.AffectiveEnabled())
+        {
+            AffectiveManager.instance.emotionManager.onNewEmotion += HandleEmotions;
+        }
     }
 
     private void LoadLevel(int number)
@@ -102,8 +107,10 @@ public class Progress : MonoBehaviour
                 LoadLevel(currentLevel + 1);
             }   
         }
-
-        CheckHardMode();
+        //If not in affective mode, 
+        if (!AffectiveManager.instance.AffectiveEnabled()) {
+            CheckHardMode();
+        }
         UpdateScoreUI();
     }
 
@@ -160,6 +167,34 @@ public class Progress : MonoBehaviour
             enemySpawner.spawnTime = levels[currentLevel].spawnRate;
             m_HardModeHandler.Disable();
         }
+    }
+
+    private void HandleEmotions(Emotion previousEmotion, Emotion emotion)
+    {
+        if (emotion.Equals(Emotion.Neutral) || emotion.Equals(Emotion.Relaxed))
+        {
+            if (m_HardModeHandler.hardModeEnabled) return;
+            m_HardModeHandler.Enable();
+            m_HardModeStartTime = Time.time;
+            enemySpawner.enemies = levels[currentLevel].specialEnemies;
+            enemySpawner.spawnTime = levels[currentLevel].spawnRate / 2;
+        } else if (emotion.Equals(Emotion.Angry))
+        {
+            enemySpawner.enemies = levels[currentLevel].enemies;
+            enemySpawner.spawnTime = levels[currentLevel].spawnRate;
+            m_HardModeHandler.Disable();
+        } else if (Emotion.Scared.Equals(emotion))
+        {
+            if (!Emotion.Scared.Equals(previousEmotion)) return;
+            enemySpawner.enemies = levels[currentLevel].enemies;
+            enemySpawner.spawnTime = levels[currentLevel].spawnRate;
+            m_HardModeHandler.Disable();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        AffectiveManager.instance.emotionManager.onNewEmotion -= HandleEmotions;
     }
 }
 

@@ -15,10 +15,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+//        GameObject.FindGameObjectWithTag()
         if (instance == null)
         {
             instance = this;
         }
+        
     }
 
     private void Update()
@@ -55,10 +57,6 @@ public class GameManager : MonoBehaviour
                 Resume();
             }
         }
-
-        if (Input.GetButtonDown("Cancel"))
-        {
-        }
     }
 
     private void Pause()
@@ -77,6 +75,7 @@ public class GameManager : MonoBehaviour
 
     public void ExitToMenu()
     {
+        AffectiveManager.instance.DisableAffectives();
         SceneManager.LoadScene("MainMenu");
     }
 

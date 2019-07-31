@@ -51,7 +51,7 @@ public class Enemy : HealthEntity
         var player = other.gameObject.GetComponent<Player>();
         if (player == null) return;
         player.TakeDamage(collisionDamage);
-        Debug.Log("Enemy death"); //Death logic (animations etc)
+//        Debug.Log("Enemy death"); //Death logic (animations etc)
         base.Die();
     }
 
