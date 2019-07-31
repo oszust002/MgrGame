@@ -8,6 +8,7 @@ public class AffectiveManager : MonoBehaviour
     [HideInInspector]
     public EmotionManager emotionManager;
     public GameObject sensorControllerObject;
+    public GameObject loggerObject;
     [HideInInspector] public SensorController sensorController;
     public static AffectiveManager instance;
 
@@ -31,6 +32,7 @@ public class AffectiveManager : MonoBehaviour
     {
         emotionManagerObject.SetActive(true);
         sensorControllerObject.SetActive(true);
+        loggerObject.SetActive(true);
     }
 
     public void DisableAffectives()

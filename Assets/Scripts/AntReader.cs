@@ -19,7 +19,7 @@ public class AntReader : MonoBehaviour
     public byte userUserRadioFreq = 57; // RF Frequency + 2400 MHz
 
     //Network key is available from ANT+ member account
-    static readonly byte[] USER_NETWORK_KEY = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+    static readonly byte[] USER_NETWORK_KEY = {0xB9, 0xA5, 0x21, 0xFB, 0xBD, 0x72, 0xC3, 0x45};
     static readonly byte USER_NETWORK_NUM = 0; // The network key is assigned to this network number
 
     private static ANT_Device _device;

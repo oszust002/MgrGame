@@ -4,4 +4,5 @@ using System;
 public class EmotionResponse
 {
     public string emotion;
+    public string additional;
 }

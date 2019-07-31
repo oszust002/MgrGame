@@ -22,6 +22,7 @@ public class Emotion
 
     public Level valence;
     public Level arousal;
+    public string additional = "";
 
 
     private Emotion(Level valence, Level arousal)
@@ -45,9 +46,9 @@ public class Emotion
             arousal = Level.MEDIUM;
             return;
         }
-
         valence = GetLevelFromString(match.Groups[1].Value);
         arousal = GetLevelFromString(match.Groups[2].Value);
+        additional = emotionResponse.additional;
     }
 
     private static Level GetLevelFromString(string levelString)
