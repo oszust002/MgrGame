@@ -39,6 +39,7 @@ public class AffectiveManager : MonoBehaviour
     {
         emotionManagerObject.SetActive(false);
         sensorControllerObject.SetActive(false);
+        loggerObject.SetActive(false);
     }
 
     public bool AffectiveEnabled()
